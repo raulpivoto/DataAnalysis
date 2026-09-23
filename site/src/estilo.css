@@ -304,3 +304,17 @@ main { max-width: 760px; margin: 0 auto; padding: 20px 16px 110px; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* ---------- tabelas do desafio ---------- */
+.tabelas-desafio { display: grid; gap: 10px; background: var(--superficie); border: 1px solid var(--linha); border-radius: 14px; padding: 12px 14px; }
+.tabelas-titulo { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; font-weight: 800; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: var(--tinta-2); }
+.tabelas-titulo .tecla { text-transform: none; letter-spacing: 0; font-weight: 600; }
+.tabela-rapida { display: grid; gap: 8px; }
+.tabela-rapida + .tabela-rapida { border-top: 1px dashed var(--linha); padding-top: 10px; }
+.tabela-rapida-cab { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { border: 1px solid var(--linha); background: var(--superficie-2); color: var(--tinta); font: 13px/1.2 var(--fonte-codigo); padding: 6px 9px; border-radius: 8px; }
+.chip:hover { border-color: var(--azul); color: var(--azul); }
+.chip-tabela { background: var(--azul-suave); border-color: transparent; color: var(--azul); font-weight: 700; font-size: 14px; }
+.licao-topo .btn-tabelas { flex: none; }
+@media (max-width: 480px) { .licao-topo .btn-tabelas { padding: 6px 8px; } }

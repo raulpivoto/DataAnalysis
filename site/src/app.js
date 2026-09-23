@@ -410,15 +410,17 @@
           h("section", { class: "esquema" },
             h("h3", {}, t, h("span", { text: linhas.length.toLocaleString("pt-BR") + " linhas" })),
             h("p", { class: "sub", style: "padding: 8px 12px 0; font-size: 13px", text: descricoes[t] }),
-            h("ul", {}, colunas.map(([c, tipo]) => h("li", {}, h("span", {}, c, chaves[t].includes(c) ? h("em", { text: " · chave" }) : null), h("em", { text: tipo.replace("VARCHAR", "texto").replace(/DECIMAL.*/, "decimal").replace("INTEGER", "inteiro").replace("DATE", "data") }))))))),
+            h("ul", {}, colunas.map(([c, tipo]) => h("li", {}, h("span", {}, c, chaves[t].includes(c) ? h("em", { text: " · chave" }) : null), h("em", { text: tipoLegivel(tipo) })))),
+            h("div", { style: "padding: 0 12px 10px" }, botaoAmostra(t)),
+            amostrasAbertas.has(t) ? h("div", { style: "padding: 0 12px 12px" }, amostra(t)) : null))),
     ];
   }
 
-  function tabelaResultado(r) {
+  function tabelaResultado(r, titulo = "Resultado") {
     const max = 200;
     const linhas = r.linhas.slice(0, max);
     return h("div", { class: "resultado" },
-      h("div", { class: "resultado-cab" }, h("span", { text: "Resultado" }), h("span", { class: "num", text: `${r.linhas.length} linha${r.linhas.length === 1 ? "" : "s"}${r.linhas.length > max ? ` (mostrando ${max})` : ""}` })),
+      h("div", { class: "resultado-cab" }, h("span", { text: titulo }), h("span", { class: "num", text: `${r.linhas.length} linha${r.linhas.length === 1 ? "" : "s"}${r.linhas.length > max ? ` (mostrando ${max})` : ""}` })),
       r.colunas.length ? h("div", { class: "tabela-rolagem" },
         h("table", {},
           h("thead", {}, h("tr", {}, r.colunas.map((c) => h("th", { text: c })))),
@@ -426,6 +428,53 @@
   }
 
   const ATALHOS = ["SELECT", "FROM", "WHERE", "*", ",", "=", "'", "(", ")", "AND", "OR", "GROUP BY", "ORDER BY", "DESC", "LIMIT", "AS", "COUNT(*)", "SUM(", "AVG(", "ROUND(", "HAVING", "DISTINCT", "JOIN", "LEFT JOIN", "ON", "IS NULL", "IN (", "LIKE", "BETWEEN", "CASE WHEN", "THEN", "ELSE", "END", "WITH", ";"];
+
+  function inserirTexto(ta, passo, txt, espaco = true) {
+    const ini = ta.selectionStart, fim = ta.selectionEnd;
+    const antes = ta.value.slice(0, ini);
+    const precisaEspaco = espaco && /\w$/.test(antes) && /^\w/.test(txt);
+    const extra = espaco && /[\w*)]$/.test(txt) && !/^[,;]$/.test(txt) ? " " : "";
+    const ins = (precisaEspaco ? " " : "") + txt + extra;
+    ta.setRangeText(ins, ini, fim, "end");
+    passo.sql = ta.value;
+    ta.focus();
+  }
+  function inserirNoEditor(txt) {
+    const ta = document.getElementById("editor-sql");
+    const p = sessao && sessao.passos && sessao.passos[sessao.i];
+    if (ta && p) inserirTexto(ta, p, txt);
+  }
+
+  /* ---- tabelas: amostra de linhas e cartão rápido do desafio ---- */
+  const amostrasAbertas = new Set();
+  const tipoLegivel = (tipo) => tipo.replace("VARCHAR", "texto").replace(/DECIMAL.*/, "decimal").replace("INTEGER", "inteiro").replace("DATE", "data");
+  function amostra(t) {
+    const { colunas, linhas } = DADOS[t];
+    return tabelaResultado({ colunas: colunas.map((c) => c[0]), linhas: linhas.slice(0, 5) }, "Primeiras 5 linhas de " + t);
+  }
+  function botaoAmostra(t) {
+    const aberta = amostrasAbertas.has(t);
+    return h("button", { class: "link", "aria-expanded": aberta ? "true" : "false", onclick: () => { aberta ? amostrasAbertas.delete(t) : amostrasAbertas.add(t); render(); } }, aberta ? "Esconder linhas" : "Ver 5 linhas");
+  }
+  function tabelasDoSql(sql) {
+    const nomes = [...sql.matchAll(/\b(?:from|join)\s+([a-z_]+)/gi)].map((m) => m[1].toLowerCase());
+    return [...new Set(nomes)].filter((n) => DADOS[n]);
+  }
+  function cartaoTabelas(ex) {
+    const tabelas = tabelasDoSql(ex.sql);
+    if (!tabelas.length) return null;
+    return h("section", { class: "tabelas-desafio", "aria-label": "Tabelas deste desafio" },
+      h("p", { class: "tabelas-titulo" }, svg(I.tabela), tabelas.length > 1 ? "Tabelas deste desafio" : "Tabela deste desafio"),
+      h("p", { class: "tecla", style: "margin-top: -6px", text: "Toque num nome para escrevê-lo no editor." }),
+      tabelas.map((t) => h("div", { class: "tabela-rapida" },
+        h("div", { class: "tabela-rapida-cab" },
+          h("button", { class: "chip chip-tabela", type: "button", onmousedown: (e) => e.preventDefault(), onclick: () => inserirNoEditor(t), title: "Escrever o nome da tabela no editor" }, t),
+          botaoAmostra(t)),
+        h("div", { class: "chips" }, DADOS[t].colunas.map(([c, tipo]) =>
+          h("button", { class: "chip", type: "button", onmousedown: (e) => e.preventDefault(), onclick: () => inserirNoEditor(c), title: tipoLegivel(tipo) }, c))),
+        amostrasAbertas.has(t) ? amostra(t) : null)),
+      h("button", { class: "link", onclick: () => { gavetaAberta = true; render(); } }, "Ver todas as tabelas do banco"));
+  }
 
   function editor(passo, aoExecutar, aoVerificar) {
     const ta = h("textarea", { id: "editor-sql", spellcheck: "false", autocapitalize: "off", autocomplete: "off", autocorrect: "off", "aria-label": "Editor SQL", placeholder: "Escreva sua consulta SQL aqui…" });
@@ -435,16 +484,7 @@
       if (e.key === "Tab" && !e.shiftKey) { e.preventDefault(); inserir("  ", false); }
       else if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) { e.preventDefault(); (e.shiftKey && aoVerificar ? aoVerificar : aoExecutar)(); }
     });
-    function inserir(txt, espaco = true) {
-      const ini = ta.selectionStart, fim = ta.selectionEnd;
-      const antes = ta.value.slice(0, ini);
-      const precisaEspaco = espaco && /\w$/.test(antes) && /^\w/.test(txt);
-      const extra = espaco && /[\w*)]$/.test(txt) && !/^[,;]$/.test(txt) ? " " : "";
-      const ins = (precisaEspaco ? " " : "") + txt + extra;
-      ta.setRangeText(ins, ini, fim, "end");
-      passo.sql = ta.value;
-      ta.focus();
-    }
+    const inserir = (txt, espaco = true) => inserirTexto(ta, passo, txt, espaco);
     return h("div", { class: "editor" }, ta,
       h("div", { class: "atalhos", "aria-label": "Inserir palavra-chave" }, ATALHOS.map((a) => h("button", { type: "button", onmousedown: (e) => e.preventDefault(), onclick: () => inserir(a) , text: a }))));
   }
@@ -582,7 +622,8 @@
     const topo = h("div", { class: "licao-topo" },
       h("button", { class: "fechar", onclick: sair, "aria-label": "Sair da lição" }, svg(I.fechar)),
       h("div", { class: "barra", role: "progressbar", "aria-valuemin": "0", "aria-valuemax": "100", "aria-valuenow": Math.round(progresso * 100) }, h("i", { style: `width: ${Math.max(4, progresso * 100)}%` })),
-      s.tipo === "boss" && s.prazo ? h("span", { class: "cronometro", id: "cronometro" }, svg(I.relogio), h("span", { text: formatarTempo(s.prazo - Date.now()) })) : null);
+      s.tipo === "boss" && s.prazo ? h("span", { class: "cronometro", id: "cronometro" }, svg(I.relogio), h("span", { text: formatarTempo(s.prazo - Date.now()) })) : null,
+      h("button", { class: "btn-tabelas", onclick: () => { gavetaAberta = true; render(); }, "aria-label": "Ver tabelas do banco" }, svg(I.tabela), "Tabelas"));
 
     let corpo;
     if (p.tipo === "conceito") corpo = passoConceito(p);
@@ -633,6 +674,7 @@
       h("p", { class: "enunciado-id" }, `${s.tipo === "revisao" ? s.titulo : eBoss ? "Questão" : "Desafio"} ${numero} de ${qtd} · ${ex.id}`,
         h("span", { class: "xp-pilula num", text: s.tipo === "revisao" ? "+10 XP" : jaFeito && jaFeito.status === "ok" ? "feito" : `+${ex.xp} XP` })),
       h("div", { class: "enunciado", html: ex.texto }),
+      eBoss ? null : cartaoTabelas(ex),
       motorPronto() || [
         editor(p, exec, verif),
         h("div", { class: "acoes" },
