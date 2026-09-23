@@ -17,6 +17,10 @@ $ python xp.py
 ════════════════════════════════
 ```
 
+## 🌐 Estudar direto no navegador
+
+**[Trilha do Analista](https://claude.ai/artifact/GjtQF6u7i2qM2dWffoLSid)**: o Mês 1 inteiro como site no estilo Duolingo, sem instalar nada. Tem lições, editor SQL com correção na hora, XP, ofensiva, revisão espaçada e cartões de memória. O código-fonte do site fica em `site/` (para regerar: `python site/exportar_dados.py && python site/build.py`).
+
 ## 📚 O plano
 
 | # | Documento | Conteúdo |

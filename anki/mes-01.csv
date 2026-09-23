@@ -5,23 +5,23 @@ O que faz SELECT *?;Retorna todas as colunas da tabela. Útil para explorar, evi
 Qual a ordem de ESCRITA de uma query?;SELECT → FROM → WHERE → GROUP BY → HAVING → ORDER BY → LIMIT
 Qual a ordem de EXECUÇÃO de uma query?;FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY → LIMIT
 AND ou OR: qual é avaliado primeiro?;AND. Use parênteses para deixar a intenção explícita.
-Por que "coluna = NULL" não funciona?;NULL significa "desconhecido"; qualquer comparação com ele resulta em NULL. Use IS NULL / IS NOT NULL.
+"Por que ""coluna = NULL"" não funciona?";"NULL significa ""desconhecido""; qualquer comparação com ele resulta em NULL. Use IS NULL / IS NOT NULL."
 BETWEEN inclui os extremos?;Sim, BETWEEN a AND b equivale a >= a AND <= b.
-No LIKE, o que significam % e _?;% = qualquer sequência de caracteres (inclusive vazia); _ = exatamente um caractere.
+No LIKE, o que significam % e _?;"% = qualquer sequência de caracteres (inclusive vazia); _ = exatamente um caractere."
 Para que serve DISTINCT?;Remove linhas duplicadas do resultado.
 Por que usar um critério de desempate no ORDER BY?;Sem ele, linhas empatadas podem aparecer em ordem diferente a cada execução (resultado não determinístico).
 Posso usar um alias do SELECT no WHERE?;No SQL padrão, não: o WHERE é executado antes do SELECT. No ORDER BY pode.
 Fórmula da margem percentual?;(preço − custo) / preço × 100
-COUNT(*) vs COUNT(coluna)?;COUNT(*) conta todas as linhas; COUNT(coluna) ignora NULLs.
+COUNT(*) vs COUNT(coluna)?;"COUNT(*) conta todas as linhas; COUNT(coluna) ignora NULLs."
 Funções de agregação consideram NULL?;Não, SUM/AVG/MIN/MAX/COUNT(coluna) ignoram NULL.
 Regra de ouro do GROUP BY?;Toda coluna do SELECT que não está dentro de uma agregação precisa estar no GROUP BY.
-WHERE vs HAVING?;WHERE filtra linhas antes de agrupar; HAVING filtra grupos depois de agrupar.
+WHERE vs HAVING?;"WHERE filtra linhas antes de agrupar; HAVING filtra grupos depois de agrupar."
 Para que serve DATE_TRUNC('month', data)?;Leva a data ao primeiro dia do mês, ideal para agrupar séries temporais mensais.
-Quando preferir mediana à média?;Quando há outliers ou assimetria (renda, preços, tempos); a mediana é robusta a extremos.
+Quando preferir mediana à média?;"Quando há outliers ou assimetria (renda, preços, tempos); a mediana é robusta a extremos."
 O que significa média muito maior que a mediana?;Assimetria à direita: poucos valores altos puxam a média para cima.
 O que é desvio padrão, em uma frase?;A distância típica dos valores em relação à média (dispersão).
 O que são Q1, Q2 e Q3?;Os valores que cortam os dados ordenados em 25%, 50% (mediana) e 75%.
-O que é IQR?;Intervalo interquartil = Q3 − Q1; mostra onde estão os 50% centrais dos dados.
+O que é IQR?;"Intervalo interquartil = Q3 − Q1; mostra onde estão os 50% centrais dos dados."
 Regra do boxplot para outlier superior?;Valor > Q3 + 1,5 × IQR
 Devo remover outliers automaticamente?;Não. Investigue primeiro: podem ser erro, fraude ou um cliente legítimo muito relevante.
 O que é chave primária (PK)?;Coluna(s) que identificam cada linha de forma única e não nula.
@@ -30,11 +30,11 @@ O que é cardinalidade 1:N?;Um registro de uma tabela se relaciona com vários d
 Qual o risco de juntar tabelas 1:N e somar uma coluna do lado 1?;Duplicação: o valor se repete para cada linha do lado N e a soma fica inflada.
 INNER JOIN vs LEFT JOIN?;INNER: só linhas com correspondência nos dois lados. LEFT: todas da esquerda + correspondência (ou NULL).
 Como encontrar registros sem correspondência (anti-join)?;LEFT JOIN + WHERE tabela_direita.chave IS NULL
-Para que serve COALESCE(x, 0)?;Retorna o primeiro valor não nulo; troca NULL por 0 (ou outro padrão).
+Para que serve COALESCE(x, 0)?;"Retorna o primeiro valor não nulo; troca NULL por 0 (ou outro padrão)."
 Como calcular uma taxa com CASE?;100.0 * SUM(CASE WHEN condição THEN 1 ELSE 0 END) / COUNT(*)
 Em um CASE WHEN com várias condições verdadeiras, qual vence?;A primeira condição verdadeira, na ordem em que foi escrita.
 O que é fato e dimensão (star schema)?;Fato = eventos/medidas (vendas, itens). Dimensão = contexto descritivo (cliente, produto, data).
 Como calcular ticket médio corretamente?;Primeiro somar o valor por pedido, depois tirar a média desses totais (não é AVG do preço do item).
-Subquery vs CTE?;Mesmo poder; a CTE (WITH) nomeia etapas, deixa a query legível e pode ser referenciada várias vezes.
+Subquery vs CTE?;"Mesmo poder; a CTE (WITH) nomeia etapas, deixa a query legível e pode ser referenciada várias vezes."
 O que é taxa de recompra?;% de clientes (que compraram) com 2 ou mais pedidos.
 O que é taxa de conversão de um canal?;Compradores ÷ clientes cadastrados vindos daquele canal.
