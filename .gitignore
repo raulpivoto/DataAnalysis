@@ -1,0 +1,7 @@
+# Banco gerado localmente (rode: python dados/criar_banco.py)
+dados/*.duckdb
+dados/*.duckdb.wal
+__pycache__/
+.ipynb_checkpoints/
+.venv/
+.DS_Store
