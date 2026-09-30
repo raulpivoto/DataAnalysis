@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Estudos Transpetro Ênfase 9</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--tx:#1b2430;--mut:#5b6675;--bd:#dde2e8;--ac:#0b6b4f;--acbg:#e3f3ed;--ok:#137a3a;--okbg:#e4f5ea;--er:#b3261e;--erbg:#fbe9e7;--warn:#8a5a00;--warnbg:#fff4d6}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#12161c;--card:#1a2029;--tx:#e6eaf0;--mut:#9aa6b6;--bd:#2c3542;--ac:#4cc79b;--acbg:#173428;--ok:#5fd68a;--okbg:#153223;--er:#ff8a80;--erbg:#3a1e1c;--warn:#f2c265;--warnbg:#3a2e12}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+header{background:var(--ac);color:#fff;padding:20px 16px}
+@media (prefers-color-scheme:dark){header{color:#0b1f17}}
+header h1{margin:0;font-size:1.3rem}header p{margin:4px 0 0;opacity:.9;font-size:.9rem}
+.wrap{max-width:900px;margin:0 auto;padding:0 16px}
+nav{position:sticky;top:0;background:var(--card);border-bottom:1px solid var(--bd);z-index:5}
+nav .wrap{display:flex;gap:4px;overflow-x:auto;padding:8px 16px}
+nav button{border:0;background:none;color:var(--mut);padding:8px 12px;border-radius:8px;font:inherit;cursor:pointer;white-space:nowrap}
+nav button[aria-selected=true]{background:var(--acbg);color:var(--ac);font-weight:600}
+section{display:none;padding:20px 0 60px}section.on{display:block}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:16px 18px;margin:14px 0}
+h2{font-size:1.3rem;margin:24px 0 8px}h3{font-size:1.05rem;margin:0 0 6px}
+.src{font-size:.85rem;color:var(--mut);border-left:3px solid var(--bd);padding-left:10px;margin-top:8px}
+.alert{background:var(--warnbg);color:var(--warn);border-radius:10px;padding:12px 14px;margin:14px 0;font-size:.93rem}
+table{border-collapse:collapse;width:100%;font-size:.92rem}th,td{border:1px solid var(--bd);padding:6px 9px;text-align:left;vertical-align:top}th{background:var(--acbg)}
+pre{background:var(--bg);border:1px solid var(--bd);border-radius:8px;padding:12px;overflow-x:auto;font-size:.85rem;line-height:1.45}
+.tag{display:inline-block;font-size:.75rem;padding:1px 8px;border-radius:99px;background:var(--acbg);color:var(--ac);margin-left:6px}
+.q{margin:16px 0}.q p.en{font-weight:600}
+.opt{display:flex;gap:8px;align-items:flex-start;padding:8px 10px;border:1px solid var(--bd);border-radius:8px;margin:6px 0;cursor:pointer}
+.opt input{margin-top:5px}.opt.sel{border-color:var(--ac);background:var(--acbg)}
+.opt.right{border-color:var(--ok);background:var(--okbg)}.opt.wrong{border-color:var(--er);background:var(--erbg)}
+.cm{font-size:.9rem;margin:2px 0 6px 28px;color:var(--mut)}.cm b{color:var(--tx)}
+.btn{background:var(--ac);color:#fff;border:0;border-radius:8px;padding:10px 18px;font:inherit;font-weight:600;cursor:pointer}
+@media (prefers-color-scheme:dark){.btn{color:#0b1f17}}
+.btn.sec{background:none;color:var(--ac);border:1px solid var(--ac)}
+#res{font-weight:700;font-size:1.1rem;margin:12px 0}
+details{margin:8px 0}summary{cursor:pointer;font-weight:600}
+li{margin:3px 0}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<h1>Estudos Transpetro: Ênfase 9, Comércio e Suprimentos</h1>
+<p>Edital TRANSPETRO/PSP/TERRA Nível Superior 2026.4 · Banca: Fundação Cesgranrio</p>
+</div></header>
+<nav><div class="wrap" role="tablist">
+<button role="tab" aria-selected="true" data-t="edital">Edital</button>
+<button role="tab" aria-selected="false" data-t="m1">Módulo 1</button>
+<button role="tab" aria-selected="false" data-t="quiz">Quiz 1</button>
+<button role="tab" aria-selected="false" data-t="roadmap">Próximos módulos</button>
+</div></nav>
+<main class="wrap">
+
+<section id="edital" class="on">
+<h2>O que o edital diz (conferido no PDF)</h2>
+<div class="card">
+<table>
+<tr><th>Banca</th><td>Fundação Cesgranrio</td></tr>
+<tr><th>Prova objetiva</th><td>70 questões de 1 ponto, com 5 alternativas (A a E) e uma única correta: <b>50 de Conhecimentos Específicos</b> (Fase 1) e <b>20 de Conhecimentos Gerais</b> (Fase 2: 10 de Língua Portuguesa e 10 de Língua Inglesa).</td></tr>
+<tr><th>Eliminação</th><td>Aproveitamento inferior a 50% em Específicos, ou inferior a 50% em Gerais, ou nota zero em qualquer matéria de Gerais (item 7.1.4.3).</td></tr>
+<tr><th>Classificação</th><td>Passam para a Fase 2 os mais bem colocados em Específicos, até 2 vezes o número de vagas mais cadastro de reserva. A ordenação final usa a soma das notas das duas fases (itens 7.1.2 e 7.1.4).</td></tr>
+<tr><th>Local</th><td>Rio de Janeiro</td></tr>
+<tr><th>Finalidade da ênfase</th><td>Atuar em comercialização, marketing e logística dos produtos e serviços da companhia (mercados nacional e internacional), e executar a fiscalização técnica e administrativa dos contratos de bens e serviços.</td></tr>
+<tr><th>Formação exigida</th><td>Bacharelado em Administração, Ciências Contábeis, Comércio Exterior, Economia, Engenharia, Estatística, Física, Química, Marketing, Matemática ou Relações Internacionais, com registro no conselho de classe.</td></tr>
+</table>
+</div>
+<h2>Conteúdo programático oficial da Ênfase 9 (Anexo IV)</h2>
+<div class="card">
+<ul>
+<li><b>Exatas:</b> relações entre volume, pressão e temperatura; lógica; conjuntos; relações; funções; logaritmos; trigonometria; cálculo vetorial e matricial; análise combinatória; progressões; sistemas de numeração; probabilidade; estatística descritiva; termologia (noções básicas); sistemas de unidades e conversões.</li>
+<li><b>Finanças e economia:</b> matemática financeira; métodos de avaliação econômica (VPL e TIR); noções elementares de micro e macroeconomia.</li>
+<li><b>Produtos:</b> principais características do petróleo e derivados (GLP, gasolina, óleo diesel); gás natural; biocombustíveis.</li>
+<li><b>Marketing e logística:</b> noções elementares de marketing e logística.</li>
+<li><b>Marítimo e portuário:</b> serviços de apoio portuário e agentes marítimos; mercado mundial de afretamentos (estrutura e funcionamento); portos e terminais marítimos; transporte marítimo de granéis líquidos; navegação regular e navegação livre; avarias marítimas.</li>
+<li><b>Tributos (conhecimentos básicos):</b> IRPJ e CSLL; IRRF; ICMS; participações governamentais; PIS/PASEP; COFINS; CIDE (Leis 10.336/2001 e 10.636/2002); legislação do ISS; contribuição previdenciária; EC 132/2023; LC 214/2025.</li>
+<li><b>Contratação:</b> arts. 28 a 91 da Lei 13.303/2016; arts. 42 a 49 da LC 123/2006 e alterações da LC 147/2014.</li>
+<li><b>Dutos e regulação:</b> transporte dutoviário; Lei 9.478/1997 e alterações; Portaria ANP nº 881/2022.</li>
+</ul>
+<p class="src">Fonte: Edital TRANSPETRO/PSP/TERRA Nível Superior 2026.4, item 1.9 e Anexo IV.</p>
+</div>
+<div class="alert"><b>Correção importante:</b> na primeira versão do plano eu propus tópicos como gestão de estoques, Incoterms, negociação e comercialização de petróleo como módulos centrais. <b>Vários deles não aparecem no edital da Ênfase 9.</b> O edital cobra "noções elementares de marketing e logística", e não detalha SCM, estoques ou Incoterms. O Módulo 1 abaixo cobre essas noções, mas a profundidade real da cobrança é incerta. Confira sempre o edital e provas anteriores da Cesgranrio.</div>
+</section>
+
+<section id="m1">
+<h2>Módulo 1: Noções de logística e marketing <span class="tag">edital: "noções elementares de marketing e logística"</span></h2>
+<div class="card"><h3>Introdução</h3>
+<p>A Transpetro atua no transporte e armazenamento de petróleo, derivados, gás e biocombustíveis. Logística e marketing formam a base conceitual da atuação em comercialização. Por serem "noções elementares", esperam-se definições, comparações entre conceitos e aplicações simples.</p></div>
+<div class="card"><h3>Objetivos de aprendizagem</h3>
+<ul><li>Diferenciar logística de gestão da cadeia de suprimentos (SCM).</li>
+<li>Identificar os fluxos da cadeia e o trade-off entre eficiência e responsividade.</li>
+<li>Explicar o efeito chicote e suas causas.</li>
+<li>Definir marketing, segmentação, posicionamento e o composto de marketing (4 Ps), ligando "praça" à logística.</li></ul></div>
+
+<h2>Parte A: Logística e cadeia de suprimentos</h2>
+<div class="card"><h3>1. Logística × SCM</h3>
+<p><b>Logística</b> é a parte do processo da cadeia que planeja, implementa e controla o fluxo e a armazenagem eficientes e eficazes de bens, serviços e informações, do ponto de origem ao ponto de consumo, para atender às exigências do cliente. <b>SCM</b> abrange o planejamento e a gestão de sourcing, compras, conversão e logística, incluindo a coordenação e colaboração com parceiros. <b>Logística é subconjunto da SCM.</b></p>
+<p class="src">Fontes: definições do CSCMP; BALLOU, R. H. <i>Gerenciamento da Cadeia de Suprimentos/Logística Empresarial</i>, Bookman; CHOPRA, S.; MEINDL, P. <i>Gestão da Cadeia de Suprimentos</i>, Pearson (cap. 1). Confira a numeração na sua edição.</p></div>
+<div class="card"><h3>2. Fluxos e elos</h3>
+<p>Fluxos: físico, de informação e financeiro.</p>
+<pre>UPSTREAM           MIDSTREAM                      DOWNSTREAM
+Exploração e   →   Transporte (dutos, navios)  →  Refino → Distribuição
+produção           e armazenagem (terminais)      → Varejo/consumidor</pre>
+<p class="src">Fonte: segmentação upstream/midstream/downstream é convenção de mercado, não definição legal nem do edital.</p></div>
+<div class="card"><h3>3. Estratégia e trade-off</h3>
+<p>Objetivo da cadeia: maximizar o <b>excedente</b> (valor para o cliente menos custo da cadeia). Deve haver <b>ajuste estratégico</b> entre estratégia competitiva e estratégia da cadeia. Mais <b>responsividade</b> tende a elevar o custo. Mais <b>eficiência</b> reduz a responsividade.</p>
+<p>Direcionadores: instalações, estoque, transporte, informação, fontes de suprimento (sourcing) e preço.</p>
+<p class="src">Fonte: CHOPRA; MEINDL, caps. 1 a 3.</p></div>
+<div class="card"><h3>4. Efeito chicote (bullwhip)</h3>
+<p>A variabilidade dos pedidos aumenta conforme se sobe na cadeia. Causas: (1) processamento da previsão de demanda; (2) formação de lotes; (3) flutuação de preços e promoções; (4) racionamento e jogo de escassez. Mitigação: compartilhar informação de demanda, reduzir lotes e prazos, estabilizar preços e colaborar.</p>
+<p class="src">Fonte: LEE, PADMANABHAN e WHANG, "The Bullwhip Effect in Supply Chains", <i>Sloan Management Review</i>, 1997.</p></div>
+
+<h2>Parte B: Marketing</h2>
+<div class="card"><h3>5. Conceito</h3>
+<p>Segundo a AMA (2017), marketing é a atividade, o conjunto de instituições e os processos para criar, comunicar, entregar e trocar ofertas que tenham valor para consumidores, clientes, parceiros e a sociedade em geral. Para Kotler, é o processo social e gerencial pelo qual pessoas e grupos obtêm o que necessitam e desejam por meio da criação, oferta e troca de produtos de valor.</p>
+<p class="src">Fontes: American Marketing Association (definição de 2017); KOTLER, P.; KELLER, K. <i>Administração de Marketing</i>, Pearson.</p></div>
+<div class="card"><h3>6. Segmentação, mercado-alvo e posicionamento (STP)</h3>
+<ul><li><b>Segmentação:</b> dividir o mercado em grupos com necessidades, características ou comportamentos semelhantes.</li>
+<li><b>Seleção de mercado-alvo:</b> escolher o(s) segmento(s) a atender.</li>
+<li><b>Posicionamento:</b> definir a imagem e o valor da oferta na mente do cliente-alvo em relação aos concorrentes.</li></ul>
+<p class="src">Fonte: KOTLER; KELLER, <i>Administração de Marketing</i>.</p></div>
+<div class="card"><h3>7. Composto de marketing (4 Ps)</h3>
+<table><tr><th>P</th><th>Decisões</th></tr>
+<tr><td>Produto</td><td>Atributos, qualidade, variedade, serviços associados</td></tr>
+<tr><td>Preço</td><td>Política de preços, descontos, prazos de pagamento</td></tr>
+<tr><td>Praça (distribuição)</td><td>Canais, cobertura, localização, estoques e transporte, ou seja, o elo com a logística</td></tr>
+<tr><td>Promoção (comunicação)</td><td>Propaganda, vendas pessoais, promoção de vendas, relações públicas</td></tr></table>
+<p class="src">Fontes: McCARTHY, E. J. <i>Basic Marketing</i>, 1960 (origem dos 4 Ps); KOTLER; KELLER.</p></div>
+
+<h2>Mapa mental</h2>
+<pre>NOÇÕES DE LOGÍSTICA E MARKETING
+├── Logística ⊂ SCM
+├── Fluxos: físico | informação | financeiro
+├── Trade-off: eficiência ⇄ responsividade
+├── Direcionadores: instalações, estoque, transporte,
+│                   informação, sourcing, preço
+├── Efeito chicote: previsão, lotes, preços, racionamento
+└── Marketing
+    ├── Conceito (AMA / Kotler)
+    ├── STP: segmentação → alvo → posicionamento
+    └── 4 Ps: produto, preço, praça (⇄ logística), promoção</pre>
+<p><button class="btn" data-go="quiz">Ir para o quiz</button></p>
+</section>
+
+<section id="quiz">
+<h2>Quiz do Módulo 1 <span class="tag">5 questões · padrão Cesgranrio (A a E)</span></h2>
+<div class="alert">Questões autorais e inéditas. Não são questões reais de prova. O gabarito comentado só aparece depois de você corrigir.</div>
+<div id="qs"></div>
+<p><button class="btn" id="corrigir">Corrigir</button> <button class="btn sec" id="refazer">Refazer</button></p>
+<div id="res" aria-live="polite"></div>
+</section>
+
+<section id="roadmap">
+<h2>Próximos módulos (alinhados ao Anexo IV)</h2>
+<div class="card"><table>
+<tr><th>Nº</th><th>Módulo</th><th>Itens do edital</th><th>Status</th></tr>
+<tr><td>1</td><td>Noções de logística e marketing</td><td>Noções elementares de marketing e logística</td><td>Pronto</td></tr>
+<tr><td>2</td><td>Petróleo, derivados, gás e biocombustíveis</td><td>Características do petróleo, GLP, gasolina, diesel; gás natural; biocombustíveis; unidades e conversões</td><td>A fazer</td></tr>
+<tr><td>3</td><td>Transporte marítimo e portos</td><td>Afretamentos, granéis líquidos, navegação regular e livre, avarias, agentes marítimos, portos e terminais</td><td>A fazer</td></tr>
+<tr><td>4</td><td>Dutos e regulação do setor</td><td>Transporte dutoviário; Lei 9.478/1997; Portaria ANP 881/2022</td><td>A fazer (requer leitura das normas)</td></tr>
+<tr><td>5</td><td>Contratação nas estatais</td><td>Lei 13.303/2016, arts. 28 a 91; LC 123/2006, arts. 42 a 49; LC 147/2014</td><td>A fazer</td></tr>
+<tr><td>6</td><td>Tributos</td><td>IRPJ, CSLL, IRRF, ICMS, PIS, COFINS, CIDE, ISS, EC 132, LC 214</td><td>A fazer</td></tr>
+<tr><td>7</td><td>Matemática financeira e avaliação econômica</td><td>Juros, VPL, TIR</td><td>A fazer</td></tr>
+<tr><td>8</td><td>Matemática, estatística e física básica</td><td>Lógica, funções, probabilidade, estatística descritiva, gases, termologia</td><td>A fazer</td></tr>
+<tr><td>9</td><td>Micro e macroeconomia</td><td>Noções elementares</td><td>A fazer</td></tr>
+</table></div>
+<div class="alert">Estoques, Incoterms e negociação não constam literalmente no Anexo IV da Ênfase 9. Só entrarão como complemento, se você pedir, e serão marcados como fora do edital.</div>
+</section>
+</main>
+
+<script>
+const Q=[
+{e:"Sobre a relação entre logística e gestão da cadeia de suprimentos (SCM), é correto afirmar que",
+o:["a logística é mais ampla que a SCM, pois abrange fornecedores e clientes finais.","a SCM restringe-se às atividades de transporte e armazenagem dentro da empresa.","a logística é parte da SCM, que também envolve coordenação e colaboração com parceiros da cadeia.","SCM e logística são sinônimos perfeitos em qualquer literatura.","a SCM trata apenas do fluxo financeiro entre elos da cadeia."],
+a:2,c:["Inverte a relação: a logística é subconjunto da SCM.","A SCM é interorganizacional, não se limita ao interior da empresa.","Correta: logística ⊂ SCM, e a SCM inclui coordenação com parceiros (CSCMP; Ballou; Chopra e Meindl).","Não são sinônimos perfeitos, embora o uso coloquial os misture.","A SCM integra fluxos físicos, de informação e financeiros."]},
+{e:"O aumento da variabilidade dos pedidos à medida que se caminha do varejo em direção aos fornecedores é conhecido como efeito chicote. Uma medida coerente para reduzi-lo é",
+o:["aumentar o tamanho dos lotes de pedido para reduzir a frequência.","compartilhar dados de demanda ao longo da cadeia.","intensificar promoções sazonais de preço.","cada elo trabalhar exclusivamente com sua própria previsão isolada.","racionar o produto para forçar os clientes a anteciparem pedidos."],
+a:1,c:["Lotes maiores (batching) são causa do efeito chicote.","Correta: o compartilhamento de informação reduz a distorção da demanda (Lee, Padmanabhan e Whang, 1997).","Promoções e flutuações de preço são causa.","Previsões isoladas amplificam a distorção.","Racionamento e jogo de escassez são causa."]},
+{e:"Segundo Chopra e Meindl, ao se optar por uma cadeia com alto nível de responsividade, espera-se, em regra,",
+o:["maior eficiência de custo, pois a responsividade elimina estoques e capacidade ociosa.","irrelevância do ajuste estratégico entre a estratégia da cadeia e a competitiva.","maior custo da cadeia, pois responsividade tende a exigir capacidade, estoque ou flexibilidade adicionais.","eliminação do trade-off entre custo e serviço.","redução automática do excedente da cadeia."],
+a:2,c:["Afirma o oposto do que o modelo prevê.","O ajuste estratégico é central no modelo.","Correta: há trade-off entre responsividade e custo (Chopra e Meindl, cap. 1).","O trade-off existe justamente nesse ponto.","O excedente pode até aumentar se o valor gerado superar o custo adicional. Não há redução automática."]},
+{e:"Em marketing, o processo de dividir o mercado em grupos de consumidores com necessidades, características ou comportamentos semelhantes é denominado",
+o:["posicionamento.","segmentação.","promoção.","precificação.","distribuição."],
+a:1,c:["Posicionamento é definir a imagem e o valor da oferta na mente do cliente-alvo.","Correta: segmentação é a divisão do mercado em grupos homogêneos (Kotler e Keller).","Promoção é um dos 4 Ps (comunicação).","Precificação é o P de preço.","Distribuição é o P de praça."]},
+{e:"No composto de marketing (4 Ps), as decisões sobre canais de distribuição, cobertura de mercado, localização, estoques e transporte relacionam-se ao P de",
+o:["produto.","preço.","promoção.","praça.","posicionamento."],
+a:3,c:["Produto trata de atributos, qualidade e serviços associados.","Preço trata de política de preços, descontos e prazos.","Promoção trata de comunicação com o mercado.","Correta: praça (place) engloba canais e logística de distribuição (McCarthy, 1960; Kotler e Keller).","Posicionamento faz parte do STP, não do composto dos 4 Ps."]}
+];
+const L="ABCDE",qs=document.getElementById("qs"),res=document.getElementById("res");
+let done=false;
+function draw(){
+ done=false;res.textContent="";
+ qs.innerHTML=Q.map((q,i)=>`<div class="q card" data-i="${i}"><p class="en">Questão ${i+1}. ${q.e}</p>`+
+  q.o.map((t,j)=>`<label class="opt"><input type="radio" name="q${i}" value="${j}"><span><b>(${L[j]})</b> ${t}</span></label>`).join("")+`<div class="fb"></div></div>`).join("");
+ qs.querySelectorAll("input").forEach(r=>r.addEventListener("change",()=>{if(done)return;
+  const b=r.closest(".q");b.querySelectorAll(".opt").forEach(x=>x.classList.remove("sel"));r.closest(".opt").classList.add("sel")}));
+}
+document.getElementById("corrigir").onclick=()=>{
+ if(done)return;
+ const marc=Q.map((q,i)=>{const s=document.querySelector(`input[name=q${i}]:checked`);return s?+s.value:-1});
+ if(marc.includes(-1)&&!confirm("Há questões sem resposta. Corrigir mesmo assim?"))return;
+ done=true;let ac=0;
+ Q.forEach((q,i)=>{
+  const box=qs.children[i],opts=box.querySelectorAll(".opt");
+  opts.forEach((o,j)=>{o.classList.remove("sel");o.querySelector("input").disabled=true;
+   if(j===q.a)o.classList.add("right");else if(j===marc[i])o.classList.add("wrong")});
+  if(marc[i]===q.a)ac++;
+  box.querySelector(".fb").innerHTML=`<details open><summary>Gabarito comentado: ${L[q.a]}</summary>`+
+   q.c.map((t,j)=>`<div class="cm"><b>(${L[j]}) ${j===q.a?"certa":"errada"}:</b> ${t}</div>`).join("")+`</details>`;
+ });
+ res.textContent=`Resultado: ${ac} de ${Q.length} (${Math.round(100*ac/Q.length)}%)`;
+ try{localStorage.setItem("tp-m1",String(ac))}catch(e){}
+};
+document.getElementById("refazer").onclick=draw;
+function go(t){
+ document.querySelectorAll("section").forEach(s=>s.classList.toggle("on",s.id===t));
+ document.querySelectorAll("nav button").forEach(b=>b.setAttribute("aria-selected",b.dataset.t===t));
+ window.scrollTo(0,0);
+}
+document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>go(b.dataset.t));
+document.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>go(b.dataset.go));
+draw();
+try{const p=localStorage.getItem("tp-m1");if(p!==null)res.textContent=`Última nota neste navegador: ${p} de ${Q.length}`}catch(e){}
+</script>
+</body>
+</html>
