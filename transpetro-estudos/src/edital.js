@@ -31,7 +31,7 @@ const EDITAL=`<h2>O que o edital diz (conferido no PDF)</h2>
 <tr><td>Negociação</td><td><a href="#m14">14</a></td><td>Comercialização, compras e contratos</td></tr>
 <tr><td>Compras, sourcing e gestão de contratos</td><td><a href="#m15">15</a></td><td>Finalidade da ênfase: fiscalização técnica e administrativa de contratos</td></tr>
 <tr><td>Comercialização de petróleo e derivados</td><td><a href="#m16">16</a></td><td>Finalidade da ênfase: comercialização nos mercados nacional e internacional</td></tr>
-<tr><td>Qualidade, segurança, meio ambiente, saúde e integridade</td><td><a href="#m17">17</a></td><td>Finalidade da ênfase cita QSMS</td></tr>
+<tr><td>Qualidade (ISO 9001), integridade e Lei Anticorrupção</td><td><a href="#m17">17</a></td><td>Finalidade da ênfase cita QSMS</td></tr>
 </table></div>
 <div class="alert"><b>Sobre os complementos:</b> não constam por nome no Anexo IV e o edital não informa pesos nem profundidade. Estudar primeiro os módulos 1 a 11 é o mais seguro. Os complementos reduzem o risco de surpresa em questões amplas de logística e comercialização, mas não são garantia de que caiam.</div>
 <div class="alert"><b>Fontes:</b> a Lei 13.303 (arts. 28 a 91), a Lei 9.478 e a Resolução ANP 881/2022 foram conferidas no texto oficial enviado. Tributos, LC 123/2006, Incoterms e demais conteúdos vêm de conhecimento prévio: confira na aba Fontes. Língua Portuguesa e Inglesa (Conhecimentos Gerais) não fazem parte desta plataforma.</div>`;
