@@ -1,133 +1,181 @@
 <!doctype html>
-<html lang="pt-BR">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Estudos Transpetro Ênfase 9</title>
-<style>
-:root{--bg:#f6f7f9;--card:#fff;--tx:#1b2430;--mut:#5b6675;--bd:#dde2e8;--ac:#0b6b4f;--acbg:#e3f3ed;--ok:#137a3a;--okbg:#e4f5ea;--er:#b3261e;--erbg:#fbe9e7;--warn:#8a5a00;--warnbg:#fff4d6}
-@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#12161c;--card:#1a2029;--tx:#e6eaf0;--mut:#9aa6b6;--bd:#2c3542;--ac:#4cc79b;--acbg:#173428;--ok:#5fd68a;--okbg:#153223;--er:#ff8a80;--erbg:#3a1e1c;--warn:#f2c265;--warnbg:#3a2e12}}
+<style>:root{--bg:#f6f7f9;--card:#fff;--tx:#1b2430;--mut:#5b6675;--bd:#dde2e8;--ac:#0b6b4f;--acbg:#e3f3ed;--ok:#137a3a;--okbg:#e4f5ea;--er:#b3261e;--erbg:#fbe9e7;--warn:#8a5a00;--warnbg:#fff4d6}
+@media (prefers-color-scheme:dark){:root{--bg:#12161c;--card:#1a2029;--tx:#e6eaf0;--mut:#9aa6b6;--bd:#2c3542;--ac:#4cc79b;--acbg:#173428;--ok:#5fd68a;--okbg:#153223;--er:#ff8a80;--erbg:#3a1e1c;--warn:#f2c265;--warnbg:#3a2e12}}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
-header{background:var(--ac);color:#fff;padding:20px 16px}
+header{background:var(--ac);color:#fff;padding:18px 16px}
 @media (prefers-color-scheme:dark){header{color:#0b1f17}}
-header h1{margin:0;font-size:1.3rem}header p{margin:4px 0 0;opacity:.9;font-size:.9rem}
-.wrap{max-width:900px;margin:0 auto;padding:0 16px}
+header h1{margin:0;font-size:1.25rem}header p{margin:4px 0 0;opacity:.9;font-size:.88rem}
+.wrap{max-width:920px;margin:0 auto;padding:0 16px}
 nav{position:sticky;top:0;background:var(--card);border-bottom:1px solid var(--bd);z-index:5}
 nav .wrap{display:flex;gap:4px;overflow-x:auto;padding:8px 16px}
-nav button{border:0;background:none;color:var(--mut);padding:8px 12px;border-radius:8px;font:inherit;cursor:pointer;white-space:nowrap}
-nav button[aria-selected=true]{background:var(--acbg);color:var(--ac);font-weight:600}
-section{display:none;padding:20px 0 60px}section.on{display:block}
-.card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:16px 18px;margin:14px 0}
-h2{font-size:1.3rem;margin:24px 0 8px}h3{font-size:1.05rem;margin:0 0 6px}
+nav a{color:var(--mut);padding:8px 12px;border-radius:8px;text-decoration:none;white-space:nowrap}
+nav a.on{background:var(--acbg);color:var(--ac);font-weight:600}
+main{padding:12px 0 60px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:14px 18px;margin:14px 0}
+h2{font-size:1.3rem;margin:22px 0 8px}h3{font-size:1.05rem;margin:0 0 6px}
 .src{font-size:.85rem;color:var(--mut);border-left:3px solid var(--bd);padding-left:10px;margin-top:8px}
 .alert{background:var(--warnbg);color:var(--warn);border-radius:10px;padding:12px 14px;margin:14px 0;font-size:.93rem}
-table{border-collapse:collapse;width:100%;font-size:.92rem}th,td{border:1px solid var(--bd);padding:6px 9px;text-align:left;vertical-align:top}th{background:var(--acbg)}
+table{border-collapse:collapse;width:100%;font-size:.92rem;display:block;overflow-x:auto}th,td{border:1px solid var(--bd);padding:6px 9px;text-align:left;vertical-align:top}th{background:var(--acbg)}
 pre{background:var(--bg);border:1px solid var(--bd);border-radius:8px;padding:12px;overflow-x:auto;font-size:.85rem;line-height:1.45}
-.tag{display:inline-block;font-size:.75rem;padding:1px 8px;border-radius:99px;background:var(--acbg);color:var(--ac);margin-left:6px}
+code{background:var(--bg);padding:1px 5px;border-radius:4px;font-size:.9em}
+.tag{display:inline-block;font-size:.75rem;padding:1px 8px;border-radius:99px;background:var(--acbg);color:var(--ac);vertical-align:middle}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.mod{display:block;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:14px}
+.mod:hover{border-color:var(--ac)}.mod b{display:block}.mod small{color:var(--mut)}
 .q{margin:16px 0}.q p.en{font-weight:600}
 .opt{display:flex;gap:8px;align-items:flex-start;padding:8px 10px;border:1px solid var(--bd);border-radius:8px;margin:6px 0;cursor:pointer}
 .opt input{margin-top:5px}.opt.sel{border-color:var(--ac);background:var(--acbg)}
 .opt.right{border-color:var(--ok);background:var(--okbg)}.opt.wrong{border-color:var(--er);background:var(--erbg)}
 .cm{font-size:.9rem;margin:2px 0 6px 28px;color:var(--mut)}.cm b{color:var(--tx)}
-.btn{background:var(--ac);color:#fff;border:0;border-radius:8px;padding:10px 18px;font:inherit;font-weight:600;cursor:pointer}
+.btn{background:var(--ac);color:#fff;border:0;border-radius:8px;padding:10px 18px;font:inherit;font-weight:600;cursor:pointer;text-decoration:none;display:inline-block}
 @media (prefers-color-scheme:dark){.btn{color:#0b1f17}}
 .btn.sec{background:none;color:var(--ac);border:1px solid var(--ac)}
-#res{font-weight:700;font-size:1.1rem;margin:12px 0}
+.res{font-weight:700;font-size:1.1rem;margin:12px 0}
 details{margin:8px 0}summary{cursor:pointer;font-weight:600}
-li{margin:3px 0}
-</style>
-</head>
+li{margin:3px 0}.row{display:flex;gap:10px;flex-wrap:wrap;justify-content:space-between}
+</style></head>
 <body>
-<header><div class="wrap">
-<h1>Estudos Transpetro: Ênfase 9, Comércio e Suprimentos</h1>
-<p>Edital TRANSPETRO/PSP/TERRA Nível Superior 2026.4 · Banca: Fundação Cesgranrio</p>
-</div></header>
-<nav><div class="wrap" role="tablist">
-<button role="tab" aria-selected="true" data-t="edital">Edital</button>
-<button role="tab" aria-selected="false" data-t="m1">Módulo 1</button>
-<button role="tab" aria-selected="false" data-t="quiz">Quiz 1</button>
-<button role="tab" aria-selected="false" data-t="roadmap">Próximos módulos</button>
-</div></nav>
-<main class="wrap">
-
-<section id="edital" class="on">
-<h2>O que o edital diz (conferido no PDF)</h2>
-<div class="card">
-<table>
+<header><div class="wrap"><h1>Estudos Transpetro: Ênfase 9, Comércio e Suprimentos</h1>
+<p>Edital TRANSPETRO/PSP/TERRA Nível Superior 2026.4 · Banca: Fundação Cesgranrio</p></div></header>
+<nav><div class="wrap"><a href="#edital">Edital</a><a href="#modulos">Módulos</a><a href="#simulado">Simulado</a><a href="#fontes">Fontes</a></div></nav>
+<main class="wrap"></main>
+<script>
+const EDITAL=`<h2>O que o edital diz (conferido no PDF)</h2>
+<div class="card"><table>
 <tr><th>Banca</th><td>Fundação Cesgranrio</td></tr>
 <tr><th>Prova objetiva</th><td>70 questões de 1 ponto, com 5 alternativas (A a E) e uma única correta: <b>50 de Conhecimentos Específicos</b> (Fase 1) e <b>20 de Conhecimentos Gerais</b> (Fase 2: 10 de Língua Portuguesa e 10 de Língua Inglesa).</td></tr>
 <tr><th>Eliminação</th><td>Aproveitamento inferior a 50% em Específicos, ou inferior a 50% em Gerais, ou nota zero em qualquer matéria de Gerais (item 7.1.4.3).</td></tr>
-<tr><th>Classificação</th><td>Passam para a Fase 2 os mais bem colocados em Específicos, até 2 vezes o número de vagas mais cadastro de reserva. A ordenação final usa a soma das notas das duas fases (itens 7.1.2 e 7.1.4).</td></tr>
+<tr><th>Classificação</th><td>Passam à Fase 2 os mais bem colocados em Específicos, até 2 vezes o número de vagas mais cadastro de reserva. A ordenação final usa a soma das notas das duas fases (itens 7.1.2 e 7.1.4).</td></tr>
 <tr><th>Local</th><td>Rio de Janeiro</td></tr>
-<tr><th>Finalidade da ênfase</th><td>Atuar em comercialização, marketing e logística dos produtos e serviços da companhia (mercados nacional e internacional), e executar a fiscalização técnica e administrativa dos contratos de bens e serviços.</td></tr>
+<tr><th>Finalidade da ênfase</th><td>Atuar em comercialização, marketing e logística dos produtos e serviços da companhia (mercados nacional e internacional) e executar a fiscalização técnica e administrativa dos contratos de bens e serviços.</td></tr>
 <tr><th>Formação exigida</th><td>Bacharelado em Administração, Ciências Contábeis, Comércio Exterior, Economia, Engenharia, Estatística, Física, Química, Marketing, Matemática ou Relações Internacionais, com registro no conselho de classe.</td></tr>
-</table>
-</div>
-<h2>Conteúdo programático oficial da Ênfase 9 (Anexo IV)</h2>
-<div class="card">
-<ul>
-<li><b>Exatas:</b> relações entre volume, pressão e temperatura; lógica; conjuntos; relações; funções; logaritmos; trigonometria; cálculo vetorial e matricial; análise combinatória; progressões; sistemas de numeração; probabilidade; estatística descritiva; termologia (noções básicas); sistemas de unidades e conversões.</li>
-<li><b>Finanças e economia:</b> matemática financeira; métodos de avaliação econômica (VPL e TIR); noções elementares de micro e macroeconomia.</li>
-<li><b>Produtos:</b> principais características do petróleo e derivados (GLP, gasolina, óleo diesel); gás natural; biocombustíveis.</li>
-<li><b>Marketing e logística:</b> noções elementares de marketing e logística.</li>
-<li><b>Marítimo e portuário:</b> serviços de apoio portuário e agentes marítimos; mercado mundial de afretamentos (estrutura e funcionamento); portos e terminais marítimos; transporte marítimo de granéis líquidos; navegação regular e navegação livre; avarias marítimas.</li>
-<li><b>Tributos (conhecimentos básicos):</b> IRPJ e CSLL; IRRF; ICMS; participações governamentais; PIS/PASEP; COFINS; CIDE (Leis 10.336/2001 e 10.636/2002); legislação do ISS; contribuição previdenciária; EC 132/2023; LC 214/2025.</li>
-<li><b>Contratação:</b> arts. 28 a 91 da Lei 13.303/2016; arts. 42 a 49 da LC 123/2006 e alterações da LC 147/2014.</li>
-<li><b>Dutos e regulação:</b> transporte dutoviário; Lei 9.478/1997 e alterações; Portaria ANP nº 881/2022.</li>
-</ul>
-<p class="src">Fonte: Edital TRANSPETRO/PSP/TERRA Nível Superior 2026.4, item 1.9 e Anexo IV.</p>
-</div>
-<div class="alert"><b>Correção importante:</b> na primeira versão do plano eu propus tópicos como gestão de estoques, Incoterms, negociação e comercialização de petróleo como módulos centrais. <b>Vários deles não aparecem no edital da Ênfase 9.</b> O edital cobra "noções elementares de marketing e logística", e não detalha SCM, estoques ou Incoterms. O Módulo 1 abaixo cobre essas noções, mas a profundidade real da cobrança é incerta. Confira sempre o edital e provas anteriores da Cesgranrio.</div>
-</section>
+</table><p class="src">Fonte: Edital TRANSPETRO/PSP/TERRA Nível Superior 2026.4, itens 1.9, 7.1 e Anexo IV.</p></div>
+<h2>Conteúdo programático oficial da Ênfase 9 (Anexo IV) e onde estudar</h2>
+<div class="card"><table>
+<tr><th>Item do edital</th><th>Módulo</th></tr>
+<tr><td>Noções elementares de marketing e logística</td><td><a href="#m1">1</a></td></tr>
+<tr><td>Principais características do petróleo e derivados (GLP, gasolina, diesel); gás natural; biocombustíveis</td><td><a href="#m2">2</a></td></tr>
+<tr><td>Serviços de apoio portuário e agentes marítimos; mercado mundial de afretamentos; portos e terminais; transporte marítimo de granéis líquidos; navegação regular e livre; avarias marítimas</td><td><a href="#m3">3</a></td></tr>
+<tr><td>Transporte dutoviário; Lei 9.478/1997 e alterações; Portaria ANP nº 881/2022</td><td><a href="#m4">4</a></td></tr>
+<tr><td>Contratação: Lei 13.303/2016, arts. 28 a 91; LC 123/2006, arts. 42 a 49; LC 147/2014</td><td><a href="#m5">5</a></td></tr>
+<tr><td>Tributos: IRPJ e CSLL, IRRF, ICMS, participações governamentais, PIS/PASEP, COFINS, CIDE (Leis 10.336/2001 e 10.636/2002), ISS, contribuição previdenciária, EC 132/2023, LC 214/2025</td><td><a href="#m6">6</a></td></tr>
+<tr><td>Matemática financeira; métodos de avaliação econômica; VPL e TIR</td><td><a href="#m7">7</a></td></tr>
+<tr><td>Noções elementares de micro e macroeconomia</td><td><a href="#m8">8</a></td></tr>
+<tr><td>Lógica; conjuntos; relações; funções; logaritmos; trigonometria; cálculo vetorial e matricial; progressões; sistemas de numeração</td><td><a href="#m9">9</a></td></tr>
+<tr><td>Análise combinatória; probabilidade; estatística descritiva</td><td><a href="#m10">10</a></td></tr>
+<tr><td>Relações entre volume, pressão e temperatura; termologia; sistemas de unidades; conversões</td><td><a href="#m11">11</a></td></tr>
+</table></div>
+<div class="alert"><b>Fora do edital:</b> gestão de estoques, Incoterms e negociação não constam do Anexo IV da Ênfase 9. O edital tampouco informa pesos por assunto nem a profundidade de cada item. Língua Portuguesa e Inglesa (Conhecimentos Gerais) não fazem parte desta plataforma.</div>
+<div class="alert">Os textos oficiais das normas não puderam ser acessados durante a criação. Valores, alíquotas, prazos e numeração de artigos devem ser conferidos no texto vigente (veja a aba Fontes).</div>`;
 
-<section id="m1">
-<h2>Módulo 1: Noções de logística e marketing <span class="tag">edital: "noções elementares de marketing e logística"</span></h2>
-<div class="card"><h3>Introdução</h3>
-<p>A Transpetro atua no transporte e armazenamento de petróleo, derivados, gás e biocombustíveis. Logística e marketing formam a base conceitual da atuação em comercialização. Por serem "noções elementares", esperam-se definições, comparações entre conceitos e aplicações simples.</p></div>
-<div class="card"><h3>Objetivos de aprendizagem</h3>
-<ul><li>Diferenciar logística de gestão da cadeia de suprimentos (SCM).</li>
-<li>Identificar os fluxos da cadeia e o trade-off entre eficiência e responsividade.</li>
-<li>Explicar o efeito chicote e suas causas.</li>
-<li>Definir marketing, segmentação, posicionamento e o composto de marketing (4 Ps), ligando "praça" à logística.</li></ul></div>
+const Q=(e,o,a,c,f)=>({e,o,a,c,f});
+const MODS=[];
+const L="ABCDE";
+const $=s=>document.querySelector(s);
+const store={get(k){try{return JSON.parse(localStorage.getItem("tp-"+k))}catch(e){return null}},set(k,v){try{localStorage.setItem("tp-"+k,JSON.stringify(v))}catch(e){}}};
+const mods=()=>MODS.slice().sort((a,b)=>a.n-b.n);
 
-<h2>Parte A: Logística e cadeia de suprimentos</h2>
-<div class="card"><h3>1. Logística × SCM</h3>
-<p><b>Logística</b> é a parte do processo da cadeia que planeja, implementa e controla o fluxo e a armazenagem eficientes e eficazes de bens, serviços e informações, do ponto de origem ao ponto de consumo, para atender às exigências do cliente. <b>SCM</b> abrange o planejamento e a gestão de sourcing, compras, conversão e logística, incluindo a coordenação e colaboração com parceiros. <b>Logística é subconjunto da SCM.</b></p>
-<p class="src">Fontes: definições do CSCMP; BALLOU, R. H. <i>Gerenciamento da Cadeia de Suprimentos/Logística Empresarial</i>, Bookman; CHOPRA, S.; MEINDL, P. <i>Gestão da Cadeia de Suprimentos</i>, Pearson (cap. 1). Confira a numeração na sua edição.</p></div>
-<div class="card"><h3>2. Fluxos e elos</h3>
-<p>Fluxos: físico, de informação e financeiro.</p>
-<pre>UPSTREAM           MIDSTREAM                      DOWNSTREAM
-Exploração e   →   Transporte (dutos, navios)  →  Refino → Distribuição
-produção           e armazenagem (terminais)      → Varejo/consumidor</pre>
-<p class="src">Fonte: segmentação upstream/midstream/downstream é convenção de mercado, não definição legal nem do edital.</p></div>
-<div class="card"><h3>3. Estratégia e trade-off</h3>
-<p>Objetivo da cadeia: maximizar o <b>excedente</b> (valor para o cliente menos custo da cadeia). Deve haver <b>ajuste estratégico</b> entre estratégia competitiva e estratégia da cadeia. Mais <b>responsividade</b> tende a elevar o custo. Mais <b>eficiência</b> reduz a responsividade.</p>
-<p>Direcionadores: instalações, estoque, transporte, informação, fontes de suprimento (sourcing) e preço.</p>
-<p class="src">Fonte: CHOPRA; MEINDL, caps. 1 a 3.</p></div>
-<div class="card"><h3>4. Efeito chicote (bullwhip)</h3>
-<p>A variabilidade dos pedidos aumenta conforme se sobe na cadeia. Causas: (1) processamento da previsão de demanda; (2) formação de lotes; (3) flutuação de preços e promoções; (4) racionamento e jogo de escassez. Mitigação: compartilhar informação de demanda, reduzir lotes e prazos, estabilizar preços e colaborar.</p>
-<p class="src">Fonte: LEE, PADMANABHAN e WHANG, "The Bullwhip Effect in Supply Chains", <i>Sloan Management Review</i>, 1997.</p></div>
+function quiz(host,qs,key){
+  let done=false;
+  host.innerHTML=`<div class="qs"></div><p><button class="btn" data-a="ok">Corrigir</button> <button class="btn sec" data-a="re">Refazer</button></p><div class="res" aria-live="polite"></div>`;
+  const box=host.querySelector(".qs"),res=host.querySelector(".res");
+  function draw(){
+    done=false;res.textContent="";
+    box.innerHTML=qs.map((q,i)=>`<div class="q card"><p class="en">Questão ${i+1}${q.m?` <span class="tag">${q.m}</span>`:""}. ${q.e}</p>`+
+      q.o.map((t,j)=>`<label class="opt"><input type="radio" name="${key}q${i}" value="${j}"><span><b>(${L[j]})</b> ${t}</span></label>`).join("")+`<div class="fb"></div></div>`).join("");
+  }
+  box.addEventListener("change",e=>{if(done||e.target.type!=="radio")return;
+    e.target.closest(".q").querySelectorAll(".opt").forEach(x=>x.classList.remove("sel"));e.target.closest(".opt").classList.add("sel")});
+  host.addEventListener("click",e=>{
+    const a=e.target.dataset.a;if(!a)return;
+    if(a==="re")return draw();
+    if(done)return;
+    const marc=qs.map((q,i)=>{const s=box.querySelector(`input[name="${key}q${i}"]:checked`);return s?+s.value:-1});
+    if(marc.includes(-1)&&!confirm("Há questões sem resposta. Corrigir mesmo assim?"))return;
+    done=true;let ac=0;
+    qs.forEach((q,i)=>{
+      const b=box.children[i];
+      b.querySelectorAll(".opt").forEach((o,j)=>{o.classList.remove("sel");o.querySelector("input").disabled=true;
+        if(j===q.a)o.classList.add("right");else if(j===marc[i])o.classList.add("wrong")});
+      if(marc[i]===q.a)ac++;
+      b.querySelector(".fb").innerHTML=`<details open><summary>Gabarito comentado: ${L[q.a]}</summary>`+
+        q.c.map((t,j)=>`<div class="cm"><b>(${L[j]}) ${j===q.a?"certa":"errada"}:</b> ${t}</div>`).join("")+
+        (q.f?`<div class="cm"><b>Fonte:</b> ${q.f}</div>`:"")+`</details>`;
+    });
+    res.textContent=`Resultado: ${ac} de ${qs.length} (${Math.round(100*ac/qs.length)}%)`;
+    const p=store.get("prog")||{};p[key]={ac,n:qs.length};store.set("prog",p);
+  });
+  draw();
+}
 
-<h2>Parte B: Marketing</h2>
-<div class="card"><h3>5. Conceito</h3>
-<p>Segundo a AMA (2017), marketing é a atividade, o conjunto de instituições e os processos para criar, comunicar, entregar e trocar ofertas que tenham valor para consumidores, clientes, parceiros e a sociedade em geral. Para Kotler, é o processo social e gerencial pelo qual pessoas e grupos obtêm o que necessitam e desejam por meio da criação, oferta e troca de produtos de valor.</p>
-<p class="src">Fontes: American Marketing Association (definição de 2017); KOTLER, P.; KELLER, K. <i>Administração de Marketing</i>, Pearson.</p></div>
-<div class="card"><h3>6. Segmentação, mercado-alvo e posicionamento (STP)</h3>
-<ul><li><b>Segmentação:</b> dividir o mercado em grupos com necessidades, características ou comportamentos semelhantes.</li>
-<li><b>Seleção de mercado-alvo:</b> escolher o(s) segmento(s) a atender.</li>
-<li><b>Posicionamento:</b> definir a imagem e o valor da oferta na mente do cliente-alvo em relação aos concorrentes.</li></ul>
-<p class="src">Fonte: KOTLER; KELLER, <i>Administração de Marketing</i>.</p></div>
-<div class="card"><h3>7. Composto de marketing (4 Ps)</h3>
-<table><tr><th>P</th><th>Decisões</th></tr>
-<tr><td>Produto</td><td>Atributos, qualidade, variedade, serviços associados</td></tr>
-<tr><td>Preço</td><td>Política de preços, descontos, prazos de pagamento</td></tr>
-<tr><td>Praça (distribuição)</td><td>Canais, cobertura, localização, estoques e transporte, ou seja, o elo com a logística</td></tr>
-<tr><td>Promoção (comunicação)</td><td>Propaganda, vendas pessoais, promoção de vendas, relações públicas</td></tr></table>
-<p class="src">Fontes: McCARTHY, E. J. <i>Basic Marketing</i>, 1960 (origem dos 4 Ps); KOTLER; KELLER.</p></div>
+const views={
+  edital:()=>EDITAL,
+  modulos(){
+    const p=store.get("prog")||{};
+    return `<h2>Módulos</h2><div class="grid">`+mods().map(m=>{const r=p["m"+m.n];
+      return `<a class="mod" href="#m${m.n}"><b>${m.n}. ${m.t}</b><small>${m.edital}</small><br><span class="tag">${r?`melhor/última: ${r.ac}/${r.n}`:"não feito"}</span></a>`}).join("")+`</div>
+      <p class="src">A ordem sugerida segue a dependência entre assuntos, não o peso na prova (o edital não informa pesos por assunto).</p>`;
+  },
+  modulo(n){
+    const list=mods(),m=list.find(x=>x.n===n);if(!m)return "<p>Módulo não encontrado.</p>";
+    const i=list.indexOf(m),prev=list[i-1],next=list[i+1];
+    return `<p><a href="#modulos">← Módulos</a></p><h2>Módulo ${m.n}: ${m.t}</h2><p><span class="tag">Edital: ${m.edital}</span></p>`+
+      (m.alerta?`<div class="alert">${m.alerta}</div>`:"")+
+      `<div class="card"><h3>Introdução</h3><p>${m.intro}</p></div>
+       <div class="card"><h3>Objetivos de aprendizagem</h3><ul>${m.obj.map(o=>`<li>${o}</li>`).join("")}</ul></div>`+
+      m.secs.map(s=>`<div class="card"><h3>${s[0]}</h3>${s[1]}${s[2]?`<p class="src">Fonte: ${s[2]}</p>`:""}</div>`).join("")+
+      `<h2>Mapa mental</h2><pre>${m.mapa}</pre><h2>Quiz do módulo <span class="tag">5 questões, padrão Cesgranrio (A a E)</span></h2>
+       <div class="alert">Questões autorais e inéditas, não são de provas reais. O gabarito comentado aparece depois de corrigir.</div><div id="quizhost"></div>
+       <p class="row"><span>${prev?`<a class="btn sec" href="#m${prev.n}">← ${prev.n}. ${prev.t}</a>`:""}</span><span>${next?`<a class="btn sec" href="#m${next.n}">${next.n}. ${next.t} →</a>`:""}</span></p>`;
+  },
+  simulado:()=>`<h2>Simulado</h2><div class="card"><p>Sorteia questões dos 11 módulos. Escolha o tamanho:</p>
+     <p><button class="btn" data-sim="10">10 questões</button> <button class="btn" data-sim="25">25 questões</button> <button class="btn" data-sim="55">Todas (55)</button></p>
+     <p class="src">Referência: a prova real tem 50 questões específicas e exige mínimo de 50% de acerto por fase (item 7.1.4.3 do edital).</p></div><div id="quizhost"></div>`,
+  fontes(){
+    const all=mods().map(m=>`<div class="card"><h3>Módulo ${m.n}: ${m.t}</h3><ul>`+
+      [...new Set(m.secs.map(s=>s[2]).filter(Boolean))].map(f=>`<li>${f}</li>`).join("")+`</ul></div>`).join("");
+    return `<h2>Fontes e pontos a conferir</h2><div class="alert">Não foi possível acessar os textos oficiais das normas neste ambiente. Números de artigos, valores e alíquotas foram escritos com base em conhecimento prévio: <b>confira no texto vigente antes de decorar</b>, principalmente valores em reais, alíquotas e prazos.</div>`+all+
+      `<div class="card"><h3>Lacunas assumidas</h3><ul><li>Portaria ANP nº 881/2022: texto não lido. O módulo 4 não afirma o conteúdo dela.</li><li>O edital não traz pesos por assunto nem indica a profundidade de cada tópico.</li><li>Estoques, Incoterms e negociação não constam do Anexo IV da Ênfase 9.</li></ul></div>`;
+  }
+};
 
-<h2>Mapa mental</h2>
-<pre>NOÇÕES DE LOGÍSTICA E MARKETING
+function route(){
+  const h=(location.hash||"#edital").slice(1);
+  let html,after;
+  const mm=h.match(/^m(\d+)$/);
+  if(mm){html=views.modulo(+mm[1]);after=()=>{const m=mods().find(x=>x.n===+mm[1]);if(m)quiz($("#quizhost"),m.q,"m"+m.n)}}
+  else if(views[h]){html=views[h]();after=null}
+  else{html=views.edital();after=null}
+  $("main").innerHTML=html;
+  document.querySelectorAll("nav a").forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+(mm?"modulos":h)));
+  window.scrollTo(0,0);
+  if(after)after();
+  if(h==="simulado")$("main").onclick=e=>{const n=e.target.dataset.sim;if(!n)return;
+    const pool=[];mods().forEach(m=>m.q.forEach(q=>pool.push(Object.assign({m:"M"+m.n},q))));
+    for(let i=pool.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]]}
+    quiz($("#quizhost"),pool.slice(0,+n),"sim");$("#quizhost").scrollIntoView()};
+  else $("main").onclick=null;
+}
+addEventListener("hashchange",route);
+addEventListener("DOMContentLoaded",route);
+
+MODS.push({n:1,t:"Noções de logística e marketing",edital:"Noções elementares de marketing e logística",
+alerta:"O edital cobra apenas \"noções elementares\". Não há detalhamento de SCM, estoques ou Incoterms no Anexo IV; este módulo cobre as noções conceituais mais prováveis.",
+intro:"A Transpetro atua no transporte e armazenamento de petróleo, derivados, gás e biocombustíveis. Logística e marketing formam a base conceitual da atuação em comercialização. Por serem noções elementares, esperam-se definições, comparações entre conceitos e aplicações simples.",
+obj:["Diferenciar logística de gestão da cadeia de suprimentos (SCM).","Identificar os fluxos da cadeia e o trade-off entre eficiência e responsividade.","Explicar o efeito chicote e suas causas.","Definir marketing, segmentação, posicionamento e o composto de marketing (4 Ps), ligando \"praça\" à logística."],
+secs:[
+["1. Logística × SCM","<p><b>Logística</b> é a parte do processo da cadeia que planeja, implementa e controla o fluxo e a armazenagem eficientes e eficazes de bens, serviços e informações, do ponto de origem ao ponto de consumo, para atender às exigências do cliente. <b>SCM</b> abrange o planejamento e a gestão de sourcing, compras, conversão e logística, incluindo a coordenação e colaboração com parceiros. <b>Logística é subconjunto da SCM.</b></p>","definições do CSCMP; BALLOU, R. H. <i>Gerenciamento da Cadeia de Suprimentos/Logística Empresarial</i>, Bookman; CHOPRA, S.; MEINDL, P. <i>Gestão da Cadeia de Suprimentos</i>, Pearson (cap. 1)."],
+["2. Fluxos e elos","<p>Fluxos: físico, de informação e financeiro.</p><pre>UPSTREAM           MIDSTREAM                      DOWNSTREAM\nExploração e   →   Transporte (dutos, navios)  →  Refino → Distribuição\nprodução           e armazenagem (terminais)      → Varejo/consumidor</pre>","segmentação upstream/midstream/downstream é convenção de mercado, não definição legal nem do edital."],
+["3. Estratégia, trade-off e direcionadores","<p>Objetivo da cadeia: maximizar o <b>excedente</b> (valor para o cliente menos custo da cadeia). Deve haver <b>ajuste estratégico</b> entre a estratégia competitiva e a da cadeia. Mais <b>responsividade</b> tende a elevar o custo; mais <b>eficiência</b> reduz a responsividade.</p><p>Direcionadores: instalações, estoque, transporte, informação, fontes de suprimento (sourcing) e preço.</p>","CHOPRA; MEINDL, <i>Gestão da Cadeia de Suprimentos</i>, caps. 1 a 3."],
+["4. Efeito chicote (bullwhip)","<p>A variabilidade dos pedidos aumenta conforme se sobe na cadeia. Causas: (1) processamento da previsão de demanda; (2) formação de lotes; (3) flutuação de preços e promoções; (4) racionamento e jogo de escassez. Mitigação: compartilhar informação de demanda, reduzir lotes e prazos, estabilizar preços e colaborar.</p>","LEE, PADMANABHAN e WHANG, \"The Bullwhip Effect in Supply Chains\", <i>Sloan Management Review</i>, 1997."],
+["5. Conceito de marketing","<p>Segundo a AMA (2017), marketing é a atividade, o conjunto de instituições e os processos para criar, comunicar, entregar e trocar ofertas que tenham valor para consumidores, clientes, parceiros e a sociedade em geral. Para Kotler, é o processo social e gerencial pelo qual pessoas e grupos obtêm o que necessitam e desejam por meio da criação, oferta e troca de produtos de valor.</p>","American Marketing Association (definição de 2017); KOTLER, P.; KELLER, K. <i>Administração de Marketing</i>, Pearson."],
+["6. Segmentação, mercado-alvo e posicionamento (STP)","<ul><li><b>Segmentação:</b> dividir o mercado em grupos com necessidades, características ou comportamentos semelhantes.</li><li><b>Seleção de mercado-alvo:</b> escolher o(s) segmento(s) a atender.</li><li><b>Posicionamento:</b> definir a imagem e o valor da oferta na mente do cliente-alvo em relação aos concorrentes.</li></ul>","KOTLER; KELLER, <i>Administração de Marketing</i>."],
+["7. Composto de marketing (4 Ps)","<table><tr><th>P</th><th>Decisões</th></tr><tr><td>Produto</td><td>Atributos, qualidade, variedade, serviços associados</td></tr><tr><td>Preço</td><td>Política de preços, descontos, prazos de pagamento</td></tr><tr><td>Praça (distribuição)</td><td>Canais, cobertura, localização, estoques e transporte: o elo com a logística</td></tr><tr><td>Promoção (comunicação)</td><td>Propaganda, vendas pessoais, promoção de vendas, relações públicas</td></tr></table>","McCARTHY, E. J. <i>Basic Marketing</i>, 1960 (origem dos 4 Ps); KOTLER; KELLER."]
+],
+mapa:`NOÇÕES DE LOGÍSTICA E MARKETING
 ├── Logística ⊂ SCM
 ├── Fluxos: físico | informação | financeiro
 ├── Trade-off: eficiência ⇄ responsividade
@@ -137,89 +185,284 @@ produção           e armazenagem (terminais)      → Varejo/consumidor</pre>
 └── Marketing
     ├── Conceito (AMA / Kotler)
     ├── STP: segmentação → alvo → posicionamento
-    └── 4 Ps: produto, preço, praça (⇄ logística), promoção</pre>
-<p><button class="btn" data-go="quiz">Ir para o quiz</button></p>
-</section>
+    └── 4 Ps: produto, preço, praça (⇄ logística), promoção`,
+q:[
+Q("Sobre a relação entre logística e gestão da cadeia de suprimentos (SCM), é correto afirmar que",["a logística é mais ampla que a SCM, pois abrange fornecedores e clientes finais.","a SCM restringe-se às atividades de transporte e armazenagem dentro da empresa.","a logística é parte da SCM, que também envolve coordenação e colaboração com parceiros da cadeia.","SCM e logística são sinônimos perfeitos em qualquer literatura.","a SCM trata apenas do fluxo financeiro entre elos da cadeia."],2,["Inverte a relação: a logística é subconjunto da SCM.","A SCM é interorganizacional, não se limita ao interior da empresa.","Logística ⊂ SCM, e a SCM inclui coordenação com parceiros.","Não são sinônimos perfeitos, embora o uso coloquial os misture.","A SCM integra fluxos físicos, de informação e financeiros."],"CSCMP; Ballou; Chopra e Meindl (cap. 1)."),
+Q("O aumento da variabilidade dos pedidos à medida que se caminha do varejo em direção aos fornecedores é conhecido como efeito chicote. Uma medida coerente para reduzi-lo é",["aumentar o tamanho dos lotes de pedido para reduzir a frequência.","compartilhar dados de demanda ao longo da cadeia.","intensificar promoções sazonais de preço.","cada elo trabalhar exclusivamente com sua própria previsão isolada.","racionar o produto para forçar os clientes a anteciparem pedidos."],1,["Lotes maiores (batching) são causa do efeito chicote.","O compartilhamento de informação reduz a distorção da demanda.","Promoções e flutuações de preço são causa.","Previsões isoladas amplificam a distorção.","Racionamento e jogo de escassez são causa."],"Lee, Padmanabhan e Whang (1997)."),
+Q("Segundo Chopra e Meindl, ao se optar por uma cadeia com alto nível de responsividade, espera-se, em regra,",["maior eficiência de custo, pois a responsividade elimina estoques e capacidade ociosa.","irrelevância do ajuste estratégico entre a estratégia da cadeia e a competitiva.","maior custo da cadeia, pois responsividade tende a exigir capacidade, estoque ou flexibilidade adicionais.","eliminação do trade-off entre custo e serviço.","redução automática do excedente da cadeia."],2,["Afirma o oposto do que o modelo prevê.","O ajuste estratégico é central no modelo.","Há trade-off entre responsividade e custo.","O trade-off existe justamente nesse ponto.","O excedente pode até aumentar se o valor gerado superar o custo adicional; não há redução automática."],"Chopra e Meindl, cap. 1."),
+Q("Em marketing, o processo de dividir o mercado em grupos de consumidores com necessidades, características ou comportamentos semelhantes é denominado",["posicionamento.","segmentação.","promoção.","precificação.","distribuição."],1,["Posicionamento é definir a imagem e o valor da oferta na mente do cliente-alvo.","Segmentação é a divisão do mercado em grupos homogêneos.","Promoção é um dos 4 Ps (comunicação).","Precificação é o P de preço.","Distribuição é o P de praça."],"Kotler e Keller."),
+Q("No composto de marketing (4 Ps), as decisões sobre canais de distribuição, cobertura de mercado, localização, estoques e transporte relacionam-se ao P de",["produto.","preço.","promoção.","praça.","posicionamento."],3,["Produto trata de atributos, qualidade e serviços associados.","Preço trata de política de preços, descontos e prazos.","Promoção trata de comunicação com o mercado.","Praça (place) engloba canais e logística de distribuição.","Posicionamento faz parte do STP, não do composto dos 4 Ps."],"McCarthy (1960); Kotler e Keller.")
+]});
 
-<section id="quiz">
-<h2>Quiz do Módulo 1 <span class="tag">5 questões · padrão Cesgranrio (A a E)</span></h2>
-<div class="alert">Questões autorais e inéditas. Não são questões reais de prova. O gabarito comentado só aparece depois de você corrigir.</div>
-<div id="qs"></div>
-<p><button class="btn" id="corrigir">Corrigir</button> <button class="btn sec" id="refazer">Refazer</button></p>
-<div id="res" aria-live="polite"></div>
-</section>
+MODS.push({n:2,t:"Petróleo, derivados, gás natural e biocombustíveis",edital:"Características do petróleo e derivados (GLP, gasolina, diesel); gás natural; biocombustíveis",
+alerta:"Percentuais de mistura (etanol na gasolina, biodiesel no diesel) e faixas de classificação por °API mudam por norma. Confira os valores vigentes no CNPE/ANP antes da prova.",
+intro:"A Transpetro movimenta petróleo, derivados, gás e biocombustíveis. O edital pede as características principais desses produtos, então o foco é composição, propriedades que distinguem cada um e como são obtidos.",
+obj:["Calcular e interpretar o grau API.","Relacionar o refino às frações obtidas.","Distinguir GLP, gasolina e diesel (composição e indicadores como octanagem e cetano).","Diferenciar gás natural, GNL e GNC.","Explicar etanol e biodiesel."],
+secs:[
+["1. Petróleo: composição e grau API","<p>Mistura complexa de hidrocarbonetos (parafínicos, naftênicos e aromáticos), com compostos de enxofre, nitrogênio, oxigênio e metais em menor teor. O <b>grau API</b> mede a densidade: <code>°API = 141,5 / d(60°F/60°F) − 131,5</code>.</p><ul><li>A água tem 10 °API. Maior °API significa petróleo <b>menos denso</b> (mais leve), em geral de maior valor.</li><li>Classificação usual: leve, médio e pesado (os cortes exatos variam conforme o critério adotado).</li><li>Quanto ao enxofre: <b>doce</b> (baixo teor) e <b>azedo</b> (alto teor).</li></ul>","THOMAS, J. E. (org.). <i>Fundamentos de Engenharia de Petróleo</i>, Interciência; ANP."],
+["2. Refino e frações","<p>A destilação atmosférica separa o petróleo por faixa de temperatura de ebulição, do mais leve ao mais pesado: gases, GLP, nafta/gasolina, querosene, diesel, gasóleos e resíduo. A destilação a vácuo processa o resíduo. O craqueamento catalítico (FCC) converte frações pesadas em frações mais leves e valiosas, como GLP e gasolina.</p>","THOMAS (org.); SZKLO, A.; ULLER, V. <i>Fundamentos do Refino de Petróleo</i>, Interciência."],
+["3. GLP","<p>Gás liquefeito de petróleo: mistura predominantemente de <b>propano e butano</b>, obtida no refino e no processamento de gás natural. É armazenado <b>liquefeito sob pressão moderada</b>. É mais denso que o ar (vazamentos acumulam em pontos baixos) e, por ser inodoro, recebe odorizante (compostos de enxofre, como mercaptanas) para permitir a detecção.</p>","THOMAS (org.); ANP."],
+["4. Gasolina","<p>Hidrocarbonetos de cadeia média (aproximadamente C5 a C12). A <b>octanagem</b> mede a resistência à detonação (knocking) em motores de ciclo Otto, usando como referência o isoctano (100) e o n-heptano (0). A gasolina automotiva brasileira leva <b>etanol anidro</b> em percentual definido por norma.</p>","THOMAS (org.); ANP (especificação e mistura vigentes)."],
+["5. Óleo diesel","<p>Fração mais pesada que a gasolina, usada em motores de ignição por compressão (ciclo Diesel). O indicador de qualidade de ignição é o <b>índice de cetano</b>, que é o oposto conceitual da octanagem: quanto maior o cetano, mais fácil a autoignição. As variantes S10 e S500 indicam o teor máximo de enxofre (10 e 500 mg/kg). O diesel comercial recebe <b>biodiesel</b> em percentual definido por norma.</p>","THOMAS (org.); ANP."],
+["6. Gás natural","<p>Mistura de hidrocarbonetos gasosos com predomínio do <b>metano</b>. Pode ser <b>associado</b> (produzido junto com o petróleo) ou <b>não associado</b>. O processamento em UPGN separa o gás seco (metano e etano) das frações mais pesadas, como o GLP. <b>GNL</b>: gás resfriado a cerca de −162 °C, quando vira líquido e reduz o volume em aproximadamente 600 vezes, facilitando o transporte marítimo. <b>GNC</b>: gás comprimido a alta pressão. A Lei 14.134/2021 é o marco legal atual do gás natural.</p>","THOMAS (org.); ANP; Lei 14.134/2021."],
+["7. Biocombustíveis","<ul><li><b>Etanol</b>: obtido por fermentação de açúcares (no Brasil, principalmente cana-de-açúcar). O anidro é misturado à gasolina; o hidratado é usado puro.</li><li><b>Biodiesel</b>: ésteres obtidos por <b>transesterificação</b> de óleos vegetais ou gorduras animais com álcool (metanol ou etanol), com glicerina como coproduto.</li><li><b>RenovaBio</b> (Lei 13.576/2017): política de incentivo à descarbonização com metas para distribuidores e créditos de descarbonização (CBIOs).</li></ul>","Lei 13.576/2017; ANP; EPE."]
+],
+mapa:`PETRÓLEO E DERIVADOS
+├── Petróleo: hidrocarbonetos; °API = 141,5/d − 131,5
+│   └── maior °API = mais leve; água = 10 °API
+├── Refino: destilação → gases, GLP, nafta, querosene, diesel, resíduo
+├── GLP: propano + butano, liquefeito sob pressão
+├── Gasolina: octanagem (Otto) + etanol anidro
+├── Diesel: cetano (ignição por compressão), S10/S500 + biodiesel
+├── Gás natural: metano; associado × não associado; GNL (−162 °C) × GNC
+└── Biocombustíveis: etanol (fermentação), biodiesel (transesterificação)`,
+q:[
+Q("Um petróleo com densidade relativa (60°F/60°F) de 0,85 possui grau API mais próximo de",["25.","30.","35.","40.","45."],2,["141,5/0,85 − 131,5 ≈ 35; o valor 25 corresponde a densidade maior (cerca de 0,90).","Corresponderia a densidade de cerca de 0,876.","141,5/0,85 = 166,5; 166,5 − 131,5 = 35 °API.","Corresponderia a densidade de cerca de 0,825.","Corresponderia a densidade de cerca de 0,802."],"Definição de grau API (Thomas, Fundamentos de Engenharia de Petróleo)."),
+Q("Sobre o GLP, é correto afirmar que é",["composto majoritariamente por metano e armazenado a −162 °C.","uma mistura de propano e butano, armazenada liquefeita sob pressão moderada.","produzido exclusivamente pela fermentação de açúcares.","menos denso que o ar, o que faz vazamentos se dissiparem para cima.","naturalmente odorizado, sem necessidade de aditivos."],1,["Descreve o GNL, não o GLP.","O GLP é de propano e butano, liquefeito sob pressão moderada.","A fermentação de açúcares gera etanol.","O GLP é mais denso que o ar e tende a se acumular em pontos baixos.","O GLP é inodoro e recebe odorizante para permitir a detecção de vazamentos."],"Thomas (org.); ANP."),
+Q("A octanagem e o índice de cetano são indicadores de qualidade, respectivamente, de",["gasolina (resistência à detonação) e diesel (facilidade de autoignição).","diesel e gasolina, nessa ordem.","GLP e gás natural.","etanol e biodiesel, exclusivamente.","querosene de aviação e óleo combustível."],0,["A octanagem mede a resistência à detonação da gasolina; o cetano mede a qualidade de ignição por compressão do diesel.","Inverte os indicadores.","Não são indicadores usuais de GLP e gás natural.","São indicadores de gasolina e diesel, independentemente da origem do combustível.","Não são os indicadores clássicos desses produtos."],"Thomas (org.); ANP."),
+Q("O GNL (gás natural liquefeito) caracteriza-se por",["ser gás natural comprimido a cerca de 200 bar.","ser resfriado a aproximadamente −162 °C, reduzindo drasticamente o volume para facilitar o transporte.","ser composto majoritariamente por propano e butano.","ser obtido por transesterificação de óleos vegetais.","não poder ser transportado por navios."],1,["Descreve o GNC.","A −162 °C o metano liquefaz e o volume cai cerca de 600 vezes.","Propano e butano compõem o GLP.","Transesterificação gera biodiesel.","O transporte marítimo em navios metaneiros é uma das principais aplicações do GNL."],"Thomas (org.); ANP."),
+Q("O biodiesel é obtido, em regra, pelo processo de",["destilação fracionada do petróleo.","craqueamento catalítico de gasóleo.","transesterificação de óleos ou gorduras com álcool.","fermentação da cana-de-açúcar.","hidrogenação do gás natural."],2,["Destilação fracionada é etapa do refino do petróleo.","O craqueamento catalítico gera frações leves a partir de pesadas no refino.","Na transesterificação formam-se ésteres (biodiesel) e glicerina.","A fermentação da cana gera etanol.","Não é o processo que define o biodiesel."],"ANP; Lei 13.576/2017 (contexto do RenovaBio).")
+]});
 
-<section id="roadmap">
-<h2>Próximos módulos (alinhados ao Anexo IV)</h2>
-<div class="card"><table>
-<tr><th>Nº</th><th>Módulo</th><th>Itens do edital</th><th>Status</th></tr>
-<tr><td>1</td><td>Noções de logística e marketing</td><td>Noções elementares de marketing e logística</td><td>Pronto</td></tr>
-<tr><td>2</td><td>Petróleo, derivados, gás e biocombustíveis</td><td>Características do petróleo, GLP, gasolina, diesel; gás natural; biocombustíveis; unidades e conversões</td><td>A fazer</td></tr>
-<tr><td>3</td><td>Transporte marítimo e portos</td><td>Afretamentos, granéis líquidos, navegação regular e livre, avarias, agentes marítimos, portos e terminais</td><td>A fazer</td></tr>
-<tr><td>4</td><td>Dutos e regulação do setor</td><td>Transporte dutoviário; Lei 9.478/1997; Portaria ANP 881/2022</td><td>A fazer (requer leitura das normas)</td></tr>
-<tr><td>5</td><td>Contratação nas estatais</td><td>Lei 13.303/2016, arts. 28 a 91; LC 123/2006, arts. 42 a 49; LC 147/2014</td><td>A fazer</td></tr>
-<tr><td>6</td><td>Tributos</td><td>IRPJ, CSLL, IRRF, ICMS, PIS, COFINS, CIDE, ISS, EC 132, LC 214</td><td>A fazer</td></tr>
-<tr><td>7</td><td>Matemática financeira e avaliação econômica</td><td>Juros, VPL, TIR</td><td>A fazer</td></tr>
-<tr><td>8</td><td>Matemática, estatística e física básica</td><td>Lógica, funções, probabilidade, estatística descritiva, gases, termologia</td><td>A fazer</td></tr>
-<tr><td>9</td><td>Micro e macroeconomia</td><td>Noções elementares</td><td>A fazer</td></tr>
-</table></div>
-<div class="alert">Estoques, Incoterms e negociação não constam literalmente no Anexo IV da Ênfase 9. Só entrarão como complemento, se você pedir, e serão marcados como fora do edital.</div>
-</section>
-</main>
+MODS.push({n:3,t:"Transporte marítimo, afretamento e portos",edital:"Apoio portuário e agentes marítimos; afretamentos; portos e terminais; granéis líquidos; navegação regular e livre; avarias",
+alerta:"O edital não detalha subtópicos. Faixas de porte de navios (DWT) e cláusulas de contratos-padrão variam por fonte; use como referência de ordem de grandeza.",
+intro:"O transporte marítimo de petróleo e derivados é feito em petroleiros, contratados no mercado de afretamento. A Transpetro opera frota e terminais, e o edital cobra estrutura do mercado, tipos de navegação, avarias e apoio portuário.",
+obj:["Diferenciar navegação regular e livre.","Explicar os principais tipos de afretamento e a lógica de frete, hire, laytime e demurrage.","Descrever o papel do agente marítimo e dos serviços de apoio portuário.","Definir avaria simples e avaria grossa.","Reconhecer a estrutura de portos e terminais de granéis líquidos."],
+secs:[
+["1. Navegação regular × livre","<ul><li><b>Regular (liner)</b>: linhas com rotas, escalas e frequência pré-definidas e tarifas publicadas. Típica de carga geral e contêineres.</li><li><b>Livre (tramp)</b>: sem rota nem calendário fixos; o navio vai onde a carga está, contratado por afretamento. Típica de granéis (petróleo, minérios, grãos). O transporte de petróleo bruto é predominantemente livre.</li></ul>","STOPFORD, M. <i>Maritime Economics</i>, Routledge; LUDOVICO, N. <i>Logística Internacional</i>, Saraiva."],
+["2. Mercado de afretamento","<p>Agentes: <b>armador</b> (proprietário do navio), <b>afretador</b> (quem contrata o navio) e <b>corretor</b> (broker), que intermedeia. O mercado responde à oferta e demanda de tonelagem: o frete oscila com o ciclo de transporte, a disponibilidade de navios e o preço do combustível (bunker). Em petroleiros, o frete costuma ser cotado em escala de referência (Worldscale) ou em valor global (lump sum).</p><table><tr><th>Modalidade</th><th>Ideia</th></tr><tr><td>Por viagem (voyage charter)</td><td>Afretador paga o <b>frete</b> (por tonelada ou valor global) e o armador arca com a operação do navio, incluindo o combustível e, em regra, as despesas de porto</td></tr><tr><td>Por tempo (time charter)</td><td>Afretador paga o <b>hire</b> (diária) e, em regra, combustível e despesas portuárias; o armador mantém a gestão náutica</td></tr><tr><td>Casco nu (bareboat)</td><td>Afretador assume posse, tripulação e gestão do navio; equivale a um arrendamento</td></tr><tr><td>Contrato de volume (COA)</td><td>Compromisso de transportar volumes ao longo do tempo, com navios definidos a cada embarque</td></tr></table><p><b>Laytime</b> é o tempo permitido para carga/descarga. Se excedido, o afretador paga <b>demurrage</b> (sobre-estadia); se houver economia de tempo, pode haver <b>despatch</b>.</p>","STOPFORD; contratos-padrão de mercado (BIMCO, INTERTANKO); gestão náutica × comercial: conceito de mercado."],
+["3. Petroleiros e granéis líquidos","<p>Classes usuais por porte: <b>VLCC</b> (aprox. 200 a 320 mil DWT), <b>Suezmax</b> (aprox. 120 a 200 mil), <b>Aframax</b> (aprox. 80 a 120 mil), <b>Panamax</b> e navios menores para derivados (produtos limpos). Os limites variam por fonte. A poluição por óleo é regulada pela Convenção MARPOL (Anexo I, óleo; Anexo II, substâncias líquidas nocivas a granel), que exige, entre outros, casco duplo, tanques de lastro segregado e lavagem com óleo cru (COW).</p>","STOPFORD; IMO (MARPOL 73/78)."],
+["4. Portos e terminais","<p>No Brasil, a Lei 12.815/2013 distingue o <b>porto organizado</b> (bem público, com autoridade portuária e operadores portuários, e exploração por concessão ou arrendamento) do <b>terminal de uso privado (TUP)</b>, explorado por autorização. Terminais de granéis líquidos têm píeres, dolphins e boias de amarração (monobóias), com dutos ligando o navio aos tanques em terra. A ANTAQ regula a atividade portuária.</p>","Lei 12.815/2013; ANTAQ."],
+["5. Apoio portuário e agente marítimo","<ul><li><b>Agente marítimo</b>: representa o armador ou afretador no porto, cuidando das formalidades com autoridades, provisões, coordenação dos serviços e documentação da escala.</li><li><b>Praticagem</b>: assessoria técnica local ao comandante para manobras seguras em zonas de praticagem (Lei 9.537/1997, LESTA).</li><li><b>Rebocadores, amarração, lanchas e fornecimento (supply, bunker)</b>: demais serviços de apoio.</li></ul>","Lei 9.537/1997; LUDOVICO."],
+["6. Avarias marítimas","<ul><li><b>Avaria simples (particular)</b>: dano ou despesa suportado apenas pelo interessado que o sofreu (navio ou carga).</li><li><b>Avaria grossa (comum)</b>: sacrifício ou despesa <b>intencional e razoável</b> feito em favor da segurança comum da expedição, e que é rateado entre todos os interessados (navio, frete e carga). Regulada por regras como as de York-Antuérpia e pelo Código Comercial. Ex.: alijamento de carga para salvar o navio.</li></ul>","Código Comercial (Lei 556/1850, parte marítima); Regras de York-Antuérpia."]
+],
+mapa:`TRANSPORTE MARÍTIMO
+├── Navegação: regular (liner, rota fixa) × livre (tramp, granéis)
+├── Afretamento: viagem | tempo | casco nu | COA
+│   └── frete/hire; laytime → demurrage / despatch
+├── Petroleiros: VLCC, Suezmax, Aframax; MARPOL
+├── Portos: organizado × TUP; terminais de granéis líquidos
+├── Apoio: agente marítimo, praticagem, rebocadores
+└── Avarias: simples (só quem sofreu) × grossa (rateada)`,
+q:[
+Q("A navegação em que o navio não tem rota nem calendário fixos, sendo contratado por afretamento para levar granéis como petróleo e minérios, denomina-se",["regular (liner).","livre (tramp).","de cabotagem exclusivamente.","interior.","de apoio marítimo."],1,["Na regular há rotas, escalas e frequência pré-definidas.","Na navegação livre (tramp) o navio segue a carga, contratado por afretamento.","Cabotagem refere-se à navegação entre portos do mesmo país; não é sinônimo de navegação livre.","Navegação interior é a realizada em hidrovias interiores.","Apoio marítimo atende plataformas e instalações offshore."],"Stopford, Maritime Economics."),
+Q("No afretamento por tempo (time charter), o afretador",["assume a posse, a tripulação e toda a gestão do navio.","paga o hire e, em regra, o combustível e as despesas portuárias, enquanto o armador mantém a gestão náutica.","paga apenas um frete por tonelada e nada mais.","não tem qualquer direito de determinar a rota comercial do navio.","transfere ao armador todos os custos de combustível."],1,["Descreve o afretamento a casco nu (bareboat).","No time charter o afretador paga o hire e os custos de viagem; a gestão náutica permanece com o armador.","Descreve o afretamento por viagem.","No time charter o afretador dirige o emprego comercial do navio (rotas e cargas), dentro dos limites do contrato.","O combustível costuma ser custo do afretador no time charter."],"Stopford; contratos-padrão de mercado."),
+Q("Diz-se que há demurrage quando",["a carga é rateada entre os interessados após sacrifício voluntário.","o afretador excede o tempo permitido para carga e descarga (laytime) e paga ao armador a sobre-estadia.","o armador entrega o navio sem tripulação.","o navio segue sem escala em rota regular.","o agente marítimo cobra taxa de praticagem."],1,["Descreve a avaria grossa.","Demurrage é a quantia paga pelo afretador ao armador pelo tempo que excede o laytime.","Descreve o afretamento a casco nu.","Não guarda relação com o conceito.","Não guarda relação com o conceito."],"Stopford; prática de mercado (BIMCO)."),
+Q("A avaria grossa (comum) caracteriza-se por",["dano sofrido apenas pela carga, sem participação dos demais.","sacrifício ou despesa intencional e razoável em favor da segurança comum da expedição, rateado entre navio, frete e carga.","qualquer dano à carga, independentemente da causa.","despesas rotineiras de manutenção do navio.","multas aplicadas pela autoridade portuária."],1,["Descreve a avaria simples (particular).","A avaria grossa é o ato voluntário de sacrifício comum, rateado entre os interessados.","Danos comuns sem sacrifício intencional geralmente são avaria simples.","Manutenção rotineira é custo do armador.","Não é avaria."],"Código Comercial (parte marítima); Regras de York-Antuérpia."),
+Q("O agente marítimo é o profissional ou empresa que",["representa o armador ou afretador no porto, cuidando das formalidades e serviços da escala.","assessora tecnicamente o comandante nas manobras em zonas de praticagem.","explora o terminal de uso privado por autorização.","determina o valor do frete nas bolsas de mercadorias.","fiscaliza a atividade portuária como agência reguladora."],0,["O agente marítimo atua como representante local do armador ou afretador.","Descreve o prático (praticagem).","Descreve o titular de um TUP.","Os fretes se formam no mercado, com participação de corretores.","Descreve a ANTAQ."],"Ludovico, Logística Internacional; Lei 9.537/1997.")
+]});
 
-<script>
-const Q=[
-{e:"Sobre a relação entre logística e gestão da cadeia de suprimentos (SCM), é correto afirmar que",
-o:["a logística é mais ampla que a SCM, pois abrange fornecedores e clientes finais.","a SCM restringe-se às atividades de transporte e armazenagem dentro da empresa.","a logística é parte da SCM, que também envolve coordenação e colaboração com parceiros da cadeia.","SCM e logística são sinônimos perfeitos em qualquer literatura.","a SCM trata apenas do fluxo financeiro entre elos da cadeia."],
-a:2,c:["Inverte a relação: a logística é subconjunto da SCM.","A SCM é interorganizacional, não se limita ao interior da empresa.","Correta: logística ⊂ SCM, e a SCM inclui coordenação com parceiros (CSCMP; Ballou; Chopra e Meindl).","Não são sinônimos perfeitos, embora o uso coloquial os misture.","A SCM integra fluxos físicos, de informação e financeiros."]},
-{e:"O aumento da variabilidade dos pedidos à medida que se caminha do varejo em direção aos fornecedores é conhecido como efeito chicote. Uma medida coerente para reduzi-lo é",
-o:["aumentar o tamanho dos lotes de pedido para reduzir a frequência.","compartilhar dados de demanda ao longo da cadeia.","intensificar promoções sazonais de preço.","cada elo trabalhar exclusivamente com sua própria previsão isolada.","racionar o produto para forçar os clientes a anteciparem pedidos."],
-a:1,c:["Lotes maiores (batching) são causa do efeito chicote.","Correta: o compartilhamento de informação reduz a distorção da demanda (Lee, Padmanabhan e Whang, 1997).","Promoções e flutuações de preço são causa.","Previsões isoladas amplificam a distorção.","Racionamento e jogo de escassez são causa."]},
-{e:"Segundo Chopra e Meindl, ao se optar por uma cadeia com alto nível de responsividade, espera-se, em regra,",
-o:["maior eficiência de custo, pois a responsividade elimina estoques e capacidade ociosa.","irrelevância do ajuste estratégico entre a estratégia da cadeia e a competitiva.","maior custo da cadeia, pois responsividade tende a exigir capacidade, estoque ou flexibilidade adicionais.","eliminação do trade-off entre custo e serviço.","redução automática do excedente da cadeia."],
-a:2,c:["Afirma o oposto do que o modelo prevê.","O ajuste estratégico é central no modelo.","Correta: há trade-off entre responsividade e custo (Chopra e Meindl, cap. 1).","O trade-off existe justamente nesse ponto.","O excedente pode até aumentar se o valor gerado superar o custo adicional. Não há redução automática."]},
-{e:"Em marketing, o processo de dividir o mercado em grupos de consumidores com necessidades, características ou comportamentos semelhantes é denominado",
-o:["posicionamento.","segmentação.","promoção.","precificação.","distribuição."],
-a:1,c:["Posicionamento é definir a imagem e o valor da oferta na mente do cliente-alvo.","Correta: segmentação é a divisão do mercado em grupos homogêneos (Kotler e Keller).","Promoção é um dos 4 Ps (comunicação).","Precificação é o P de preço.","Distribuição é o P de praça."]},
-{e:"No composto de marketing (4 Ps), as decisões sobre canais de distribuição, cobertura de mercado, localização, estoques e transporte relacionam-se ao P de",
-o:["produto.","preço.","promoção.","praça.","posicionamento."],
-a:3,c:["Produto trata de atributos, qualidade e serviços associados.","Preço trata de política de preços, descontos e prazos.","Promoção trata de comunicação com o mercado.","Correta: praça (place) engloba canais e logística de distribuição (McCarthy, 1960; Kotler e Keller).","Posicionamento faz parte do STP, não do composto dos 4 Ps."]}
-];
-const L="ABCDE",qs=document.getElementById("qs"),res=document.getElementById("res");
-let done=false;
-function draw(){
- done=false;res.textContent="";
- qs.innerHTML=Q.map((q,i)=>`<div class="q card" data-i="${i}"><p class="en">Questão ${i+1}. ${q.e}</p>`+
-  q.o.map((t,j)=>`<label class="opt"><input type="radio" name="q${i}" value="${j}"><span><b>(${L[j]})</b> ${t}</span></label>`).join("")+`<div class="fb"></div></div>`).join("");
- qs.querySelectorAll("input").forEach(r=>r.addEventListener("change",()=>{if(done)return;
-  const b=r.closest(".q");b.querySelectorAll(".opt").forEach(x=>x.classList.remove("sel"));r.closest(".opt").classList.add("sel")}));
-}
-document.getElementById("corrigir").onclick=()=>{
- if(done)return;
- const marc=Q.map((q,i)=>{const s=document.querySelector(`input[name=q${i}]:checked`);return s?+s.value:-1});
- if(marc.includes(-1)&&!confirm("Há questões sem resposta. Corrigir mesmo assim?"))return;
- done=true;let ac=0;
- Q.forEach((q,i)=>{
-  const box=qs.children[i],opts=box.querySelectorAll(".opt");
-  opts.forEach((o,j)=>{o.classList.remove("sel");o.querySelector("input").disabled=true;
-   if(j===q.a)o.classList.add("right");else if(j===marc[i])o.classList.add("wrong")});
-  if(marc[i]===q.a)ac++;
-  box.querySelector(".fb").innerHTML=`<details open><summary>Gabarito comentado: ${L[q.a]}</summary>`+
-   q.c.map((t,j)=>`<div class="cm"><b>(${L[j]}) ${j===q.a?"certa":"errada"}:</b> ${t}</div>`).join("")+`</details>`;
- });
- res.textContent=`Resultado: ${ac} de ${Q.length} (${Math.round(100*ac/Q.length)}%)`;
- try{localStorage.setItem("tp-m1",String(ac))}catch(e){}
-};
-document.getElementById("refazer").onclick=draw;
-function go(t){
- document.querySelectorAll("section").forEach(s=>s.classList.toggle("on",s.id===t));
- document.querySelectorAll("nav button").forEach(b=>b.setAttribute("aria-selected",b.dataset.t===t));
- window.scrollTo(0,0);
-}
-document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>go(b.dataset.t));
-document.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>go(b.dataset.go));
-draw();
-try{const p=localStorage.getItem("tp-m1");if(p!==null)res.textContent=`Última nota neste navegador: ${p} de ${Q.length}`}catch(e){}
-</script>
-</body>
-</html>
+MODS.push({n:4,t:"Transporte dutoviário e regulação do setor (Lei 9.478/1997)",edital:"Transporte dutoviário; Lei 9.478/1997 e alterações; Portaria ANP nº 881/2022",
+alerta:"<b>Lacuna:</b> não consegui ler a Portaria ANP nº 881/2022 e por isso este módulo não afirma o conteúdo dela. Leia o texto integral no site da ANP. Sobre a Lei 9.478/1997, confira também a redação atual dos arts. 56 a 65, alterados por leis posteriores (por exemplo, a Lei 14.134/2021, no que toca ao gás natural).",
+intro:"A Transpetro tem origem legal na Lei do Petróleo. Este módulo trata do transporte por dutos (características técnicas) e do arcabouço regulatório: monopólio da União, ANP, CNPE, autorização de transporte e acesso de terceiros.",
+obj:["Descrever tipos de dutos e vantagens/limitações do modal.","Explicar conceitos de batelada, interface e pig.","Situar o monopólio da União (CF, art. 177) e a possibilidade de contratação.","Reconhecer funções do CNPE e da ANP.","Diferenciar transporte de transferência e identificar a base legal da subsidiária de logística da Petrobras."],
+secs:[
+["1. Transporte dutoviário: conceitos","<ul><li><b>Oleoduto</b> (petróleo), <b>poliduto</b> (vários derivados, movimentados em bateladas), <b>gasoduto</b> (gás natural), além de minerodutos e alcooldutos.</li><li><b>Batelada</b>: lote de um produto empurrado pelo duto. A <b>interface</b> é a zona de mistura entre bateladas consecutivas, tratada no destino.</li><li><b>Pig</b>: dispositivo introduzido no duto para limpeza, separação de produtos ou inspeção.</li><li>Estações de <b>bombeamento</b> (líquidos) e de <b>compressão</b> (gás) mantêm a pressão e a vazão.</li><li>Tanques de teto flutuante reduzem perdas por evaporação de produtos voláteis nos terminais.</li></ul>","THOMAS (org.), <i>Fundamentos de Engenharia de Petróleo</i>; BALLOU, R. H. <i>Logística Empresarial</i> (comparação entre modais)."],
+["2. Vantagens e limitações do modal dutoviário","<p><b>Vantagens:</b> baixo custo unitário em grandes volumes, operação contínua, segurança e baixa emissão. <b>Limitações:</b> alto investimento inicial, rota fixa (baixa flexibilidade), movimenta poucos tipos de produto e exige volumes elevados para justificar o investimento.</p>","BALLOU (características operacionais dos modais)."],
+["3. Monopólio da União (CF, art. 177)","<p>Constituem monopólio da União, entre outros, a pesquisa e lavra de jazidas de petróleo e gás natural, a refinação, a importação e exportação de produtos, o transporte marítimo de petróleo bruto de origem nacional ou de derivados básicos produzidos no País e o transporte <b>por meio de conduto</b> de petróleo bruto, seus derivados e gás natural de qualquer origem. A União <b>pode contratar</b> com empresas estatais ou privadas essas atividades, observadas as condições da lei (art. 177, §1º).</p>","Constituição Federal, art. 177 e EC 9/1995."],
+["4. Lei 9.478/1997: política, CNPE e ANP","<ul><li>Dispõe sobre a política energética nacional, as atividades do monopólio do petróleo, e institui o <b>CNPE</b> (Conselho Nacional de Política Energética), órgão de assessoramento da Presidência da República para formular políticas e diretrizes de energia, e a <b>ANP</b>.</li><li>A <b>ANP</b> é entidade integrante da Administração Federal indireta, sob regime de autarquia especial, vinculada ao Ministério de Minas e Energia. Sua finalidade é a regulação, a contratação e a fiscalização das atividades econômicas da indústria do petróleo, gás natural e biocombustíveis.</li></ul>","Lei 9.478/1997, arts. 1º, 2º, 7º e 8º."],
+["5. Transporte × transferência; autorização; acesso; subsidiária","<ul><li><b>Transporte</b>: movimentação de petróleo, derivados ou gás natural em meio ou percurso de <b>interesse geral</b>. <b>Transferência</b>: movimentação em meio ou percurso de <b>interesse específico e exclusivo</b> do proprietário ou explorador das facilidades (Lei 9.478, art. 6º).</li><li>Empresas constituídas sob as leis brasileiras, com sede e administração no País, podem receber <b>autorização da ANP</b> para construir instalações e efetuar o transporte de petróleo, derivados e gás natural (art. 56).</li><li>Regra de <b>acesso de terceiros</b> aos dutos de transporte e terminais, mediante remuneração adequada ao titular das instalações (art. 58; confira a redação vigente).</li><li>A Petrobras deveria constituir <b>subsidiária</b> com atribuições de operar e construir seus dutos, terminais marítimos e embarcações para o transporte de petróleo, derivados e gás natural (art. 65). É a base legal da <b>Transpetro</b>.</li></ul>","Lei 9.478/1997, arts. 6º, 56, 58 e 65 (com alterações)."],
+["6. Portaria ANP nº 881/2022","<p><b>Texto não verificado neste material.</b> Reserve tempo para ler a norma completa no site da ANP e produzir seu próprio resumo (objeto, definições, obrigações do agente regulado e prazos). Depois, use o simulado para testar a leitura.</p>","ANP, atos normativos (sítio oficial)."]
+],
+mapa:`DUTOS E REGULAÇÃO
+├── Dutos: oleoduto | poliduto (bateladas, interface) | gasoduto
+│   └── pig, bombeamento/compressão; alto CAPEX, baixo custo unitário
+├── CF art. 177: conduto = monopólio da União; §1º: pode contratar
+├── Lei 9.478/97
+│   ├── CNPE: assessoria da Presidência (política energética)
+│   ├── ANP: autarquia especial (MME); regula, contrata, fiscaliza
+│   ├── Transporte (interesse geral) × Transferência (interesse específico)
+│   ├── Autorização da ANP (art. 56); acesso de terceiros (art. 58)
+│   └── Subsidiária da Petrobras para dutos/terminais/navios (art. 65)
+└── Portaria ANP 881/2022: ler o texto oficial`,
+q:[
+Q("A ANP, criada pela Lei 9.478/1997, é",["órgão de assessoramento da Presidência da República para formular a política energética.","autarquia sob regime especial, vinculada ao Ministério de Minas e Energia, responsável pela regulação, contratação e fiscalização das atividades da indústria do petróleo, gás natural e biocombustíveis.","empresa pública que executa o monopólio do petróleo.","subsidiária integral da Petrobras.","órgão do Tribunal de Contas da União."],1,["Descreve o CNPE.","A ANP é autarquia especial vinculada ao MME, com funções de regulação, contratação e fiscalização.","O monopólio é da União, que pode contratar empresas estatais ou privadas; a ANP não é empresa pública executora.","A Petrobras é empresa (sociedade de economia mista); a ANP não é sua subsidiária.","A ANP integra a Administração Federal indireta, não o TCU."],"Lei 9.478/1997, arts. 2º, 7º e 8º."),
+Q("A Lei 9.478/1997 previu que a Petrobras constituísse subsidiária com atribuições específicas de operar e construir seus dutos, terminais marítimos e embarcações para o transporte de petróleo, derivados e gás natural. Essa previsão é a base legal da",["ANP.","Transpetro.","CNPE.","EPE.","ANTAQ."],1,["A ANP é a agência reguladora.","A Transpetro é a subsidiária de logística da Petrobras (art. 65).","O CNPE formula políticas.","A EPE faz estudos e planejamento energético.","A ANTAQ regula transporte aquaviário e portos."],"Lei 9.478/1997, art. 65."),
+Q("Segundo a Lei 9.478/1997, a movimentação de petróleo, derivados ou gás natural em meio ou percurso de interesse específico e exclusivo do proprietário ou explorador das facilidades é denominada",["transporte.","transferência.","distribuição.","revenda.","importação."],1,["Transporte refere-se a interesse geral.","Transferência é a movimentação de interesse específico e exclusivo do proprietário das facilidades.","Distribuição é a atividade de comercializar derivados a varejistas e consumidores.","Revenda é a venda ao consumidor final.","Importação é a entrada do produto no País."],"Lei 9.478/1997, art. 6º."),
+Q("Em um poliduto que movimenta diferentes derivados em sequência, a zona de mistura entre dois lotes consecutivos é chamada de",["pig.","interface.","batelada.","estação de compressão.","monobóia."],1,["Pig é dispositivo de limpeza/inspeção.","Interface é a mistura entre bateladas consecutivas.","Batelada é o lote de um produto.","Compressão é etapa de gasodutos.","Monobóia é ponto de amarração de navios em terminais."],"Thomas (org.)."),
+Q("Considerando a Constituição Federal, o transporte, por meio de conduto, de petróleo bruto, seus derivados e gás natural de qualquer origem",["é atividade livre, sem qualquer vínculo com o monopólio da União.","constitui monopólio da União, que pode contratar empresas estatais ou privadas nos termos da lei.","é de competência exclusiva dos Municípios.","é privativo da Petrobras, sem possibilidade de contratação.","é regulado exclusivamente pela ANTAQ."],1,["O transporte por conduto integra o rol do monopólio da União (art. 177).","O art. 177 inclui o transporte por conduto no monopólio, e o §1º permite a contratação com empresas estatais ou privadas.","Não é competência municipal.","Após a EC 9/1995, a União pode contratar com outras empresas.","A ANTAQ regula transporte aquaviário; a regulação do setor de petróleo é da ANP."],"CF, art. 177 e §1º.")
+]});
+
+MODS.push({n:5,t:"Contratação nas estatais: Lei 13.303/2016 e LC 123/2006",edital:"Lei 13.303/2016, arts. 28 a 91; LC 123/2006, arts. 42 a 49; LC 147/2014",
+alerta:"Tópico de alta relevância para a ênfase (fiscalização de contratos). <b>Não consegui acessar o texto oficial</b>: numeração de artigos, valores e prazos vêm do meu conhecimento prévio. Leia os artigos 28 a 91 na íntegra e confirme cada número citado aqui. Valores em reais podem ter sido atualizados.",
+intro:"A Transpetro, como subsidiária de sociedade de economia mista, contrata bens e serviços pelo Estatuto das Estatais (Lei 13.303/2016) e por seu regulamento interno de licitações e contratos. O edital cobra os arts. 28 a 91 da lei e os arts. 42 a 49 da LC 123/2006.",
+obj:["Identificar quando a licitação é exigida, dispensada ou inexigível.","Reconhecer os princípios e as fases do procedimento.","Listar critérios de julgamento, regimes de execução e procedimentos auxiliares.","Conhecer regras sobre contratos: garantia, duração, alteração e sanções.","Aplicar o tratamento favorecido a ME e EPP (LC 123)."],
+secs:[
+["1. Regra geral e exceções (art. 28)","<p>Contratos com terceiros para obras, serviços, compras, alienações e locações são <b>precedidos de licitação</b>, ressalvadas as hipóteses de dispensa (art. 29) e inexigibilidade (art. 30). No art. 28, §3º, as empresas ficam <b>dispensadas da observância do capítulo</b> quando: (I) comercializam, prestam ou executam de forma direta produtos, serviços ou obras <b>especificamente relacionados com seus objetos sociais</b>; (II) a escolha do parceiro está associada a suas características particulares, vinculada a oportunidades de negócio definidas e específicas, com inviabilidade de procedimento competitivo justificada.</p>","Lei 13.303/2016, art. 28 (caput e §3º)."],
+["2. Dispensa e inexigibilidade (arts. 29 e 30)","<ul><li><b>Dispensa (art. 29)</b>: a competição seria possível, mas a lei autoriza contratar diretamente. Exemplos: obras e serviços de engenharia de pequeno valor (na redação original, até R$ 100 mil) e demais serviços e compras (até R$ 50 mil), desde que não sejam parcelas de um mesmo objeto; licitação deserta; preços manifestamente superiores aos de mercado; emergência ou calamidade. Os limites em reais podem ser atualizados pelo Conselho de Administração (confira o §3º do art. 29).</li><li><b>Inexigibilidade (art. 30)</b>: inviabilidade de competição, em especial fornecedor exclusivo, profissional do setor artístico consagrado e serviços técnicos especializados de natureza singular com profissional de notória especialização.</li><li>Se houver sobrepreço ou superfaturamento comprovado, respondem solidariamente quem decidiu pela contratação direta e o contratado (art. 30, §2º).</li></ul>","Lei 13.303/2016, arts. 29 e 30 (confira os incisos)."],
+["3. Princípios e diretrizes (arts. 31 e 32)","<p>A licitação busca a proposta mais vantajosa, inclusive quanto ao <b>ciclo de vida do objeto</b>, e evita sobrepreço e superfaturamento. Princípios: impessoalidade, moralidade, igualdade, publicidade, eficiência, probidade administrativa, economicidade, desenvolvimento nacional sustentável, vinculação ao instrumento convocatório, obtenção de competitividade e julgamento objetivo. Diretrizes do art. 32: padronização, busca da maior vantagem competitiva, <b>parcelamento</b> do objeto (sem perder economia de escala), <b>preferência pelo pregão</b> para bens e serviços comuns e observância da política de integridade.</p>","Lei 13.303/2016, arts. 31 e 32."],
+["4. Orçamento, impedimentos e regulamento (arts. 34 a 41)","<ul><li>O valor estimado é, em regra, <b>sigiloso</b>, podendo a empresa justificar a publicidade; no julgamento por maior desconto, o preço estimado consta do edital (art. 34).</li><li>Impedimentos (art. 38), entre outros: empresa cujo administrador ou sócio com mais de 5% do capital seja diretor ou empregado da contratante; empresa suspensa pela contratante; empresa declarada inidônea.</li><li>Prazos mínimos entre o edital e as propostas (art. 39): bens, 5 dias úteis (menor preço ou maior desconto) ou 10 (demais critérios); obras e serviços, 15 dias úteis (menor preço ou maior desconto) ou 30 (demais).</li><li>Cada empresa edita seu <b>regulamento interno de licitações e contratos</b> (art. 40).</li><li>Qualquer cidadão pode impugnar o edital até 5 dias úteis antes da abertura (art. 41).</li></ul>","Lei 13.303/2016, arts. 34, 38, 39, 40 e 41."],
+["5. Regimes de execução e critérios de julgamento (arts. 42 a 54)","<ul><li><b>Regimes</b> para obras e serviços de engenharia: empreitada por preço unitário, por preço global, tarefa, empreitada integral, <b>contratação semi-integrada</b> (projeto executivo, execução e demais operações) e <b>contratação integrada</b> (projetos básico e executivo, execução e demais operações). A <b>matriz de riscos</b> é definida nos arts. 42 e 43.</li><li><b>Critérios de julgamento</b> (art. 54): menor preço; maior desconto; melhor combinação de técnica e preço; melhor técnica; melhor conteúdo artístico; maior oferta de preço; maior retorno econômico; melhor destinação de bens alienados.</li><li><b>Modos de disputa</b> (art. 52): aberto, fechado ou combinados.</li><li><b>Empate</b> (art. 55), na ordem: disputa final; avaliação de desempenho contratual prévio; critérios de tecnologia e ME/EPP previstos em lei; sorteio.</li></ul>","Lei 13.303/2016, arts. 42, 43, 52, 54 e 55."],
+["6. Fases da licitação (art. 51) e procedimentos auxiliares (art. 63)","<p>Ordem legal das fases: (I) <b>preparação</b>; (II) divulgação; (III) apresentação de lances ou propostas; (IV) <b>julgamento</b>; (V) verificação de efetividade; (VI) <b>negociação</b>; (VII) <b>habilitação</b>; (VIII) recursos; (IX) adjudicação; (X) homologação ou revogação. A habilitação vem <b>depois</b> do julgamento, podendo, excepcionalmente, ser antecipada por decisão motivada (inversão de fases). Como regra, há fase recursal única.</p><p><b>Procedimentos auxiliares</b> (art. 63): pré-qualificação permanente, cadastramento, sistema de registro de preços e catálogo eletrônico de padronização.</p>","Lei 13.303/2016, arts. 51 e 63."],
+["7. Contratos (arts. 68 a 84)","<ul><li>Os contratos regem-se por suas cláusulas, pela Lei 13.303 e pelos <b>preceitos de direito privado</b> (art. 68).</li><li><b>Garantia</b> (art. 70): caução em dinheiro, seguro-garantia ou fiança bancária, à escolha do contratado; limite geral de 5% do valor do contrato, podendo chegar a 10% em contratações de grande vulto com complexidade técnica e riscos financeiros consideráveis.</li><li><b>Duração</b> (art. 71): em regra até 5 anos, com exceções (projetos previstos em plano de negócios e investimentos; casos em que o prazo maior é prática rotineira de mercado). Vedado prazo indeterminado.</li><li><b>Alteração</b>: por acordo entre as partes, vedada violação do dever de licitar (art. 72); acréscimos ou supressões unilaterais até <b>25%</b> do valor inicial atualizado, e até <b>50%</b> no caso de reforma de edifício ou equipamento (art. 81).</li><li><b>Sanções</b> (art. 83): advertência; multa; suspensão temporária de participação em licitação e impedimento de contratar com a entidade sancionadora por prazo não superior a 2 anos.</li></ul>","Lei 13.303/2016, arts. 68, 70, 71, 72, 81 e 83."],
+["8. Fiscalização e controle (arts. 85 a 91)","<p>As estatais sujeitam-se à fiscalização do Estado e da sociedade: controle interno, controle externo pelo Tribunal de Contas (art. 87), publicidade de informações e canais de denúncia, além de deveres de governança. O art. 91 trata da adaptação de empresas já existentes à lei. Leia os arts. 85 a 91 na íntegra.</p>","Lei 13.303/2016, arts. 85 a 91."],
+["9. LC 123/2006, arts. 42 a 49 (ME e EPP)","<ul><li><b>Regularidade fiscal e trabalhista</b> só é exigida na <b>assinatura do contrato</b> (art. 42). Havendo restrição, prazo de 5 dias úteis, prorrogável por igual período, após ser declarado vencedor (art. 43); a não regularização gera decadência do direito à contratação.</li><li><b>Empate ficto</b> (art. 44): propostas de ME/EPP iguais ou até 10% superiores à melhor proposta; no pregão, até 5%. A ME/EPP mais bem classificada pode apresentar proposta inferior e vencer.</li><li><b>Tratamento diferenciado</b> (arts. 47 e 48): licitação <b>exclusiva</b> para ME/EPP em itens de até R$ 80 mil; exigência de <b>subcontratação</b> em obras e serviços; <b>cota de até 25%</b> do objeto para bens divisíveis; possibilidade de prioridade para empresas sediadas local ou regionalmente, até 10% do melhor preço.</li><li>Não se aplica (art. 49), por exemplo, quando não houver ao menos 3 fornecedores competitivos ME/EPP sediados local ou regionalmente, ou quando o tratamento for desvantajoso para a Administração.</li><li>A LC 147/2014 tornou o tratamento diferenciado obrigatório (\"deverá\") e alterou dispositivos da LC 123.</li></ul>","LC 123/2006, arts. 42 a 49; LC 147/2014."]
+],
+mapa:`CONTRATAÇÃO (Lei 13.303/2016)
+├── Art. 28: regra = licitar; §3º: comercialização do objeto social não segue o capítulo
+├── Art. 29 dispensa | Art. 30 inexigibilidade
+├── Arts. 31-32: princípios; parcelamento; pregão preferencial
+├── Fases (art. 51): preparação → divulgação → lances → julgamento
+│                    → negociação → HABILITAÇÃO → recursos → adjudicação → homologação
+├── Critérios (art. 54): menor preço, maior desconto, técnica e preço...
+├── Contratos: direito privado; garantia 5% (até 10%); prazo 5 anos;
+│              alteração 25% (50% reforma); sanções até 2 anos (art. 83)
+└── LC 123: regularidade só na assinatura; empate ficto 10% (5% pregão);
+            exclusiva até R$ 80 mil; cota 25%`,
+q:[
+Q("Nos termos do art. 28, §3º, da Lei 13.303/2016, as empresas públicas e sociedades de economia mista são dispensadas da observância das regras de licitação do capítulo, entre outras hipóteses, na",["compra de qualquer bem, independentemente de valor.","comercialização, prestação ou execução, de forma direta, de produtos, serviços ou obras especificamente relacionados com seus objetos sociais.","contratação de serviços de limpeza de suas instalações.","contratação de obras de escritórios administrativos.","aquisição de material de escritório de grande valor."],1,["Compras em geral seguem a regra de licitar, salvo dispensa ou inexigibilidade.","É a hipótese do art. 28, §3º, I: atividade-fim, diretamente relacionada ao objeto social.","Serviços de limpeza são atividade-meio e seguem o regime de licitação.","Obras administrativas não são atividade-fim.","Compras de grande valor são licitadas."],"Lei 13.303/2016, art. 28, §3º."),
+Q("Na sequência de fases prevista no art. 51 da Lei 13.303/2016, a habilitação ocorre, como regra,",["antes da apresentação de lances ou propostas.","depois do julgamento e da negociação, podendo ser antecipada excepcionalmente por decisão motivada.","somente após a homologação.","apenas em licitações de obras.","depois da adjudicação."],1,["É a regra da lei anterior; na Lei 13.303 a inversão de fases é a regra.","Na ordem legal, a habilitação vem após julgamento e negociação, com possibilidade de antecipação motivada.","A homologação é a última fase.","Aplica-se a qualquer objeto.","A adjudicação vem depois da habilitação e dos recursos."],"Lei 13.303/2016, art. 51 e §1º."),
+Q("Quanto às garantias contratuais previstas na Lei 13.303/2016, é correto afirmar que",["a garantia é sempre obrigatória e de 30% do contrato.","o limite geral é de 5% do valor do contrato, podendo chegar a 10% em contratações de grande vulto com complexidade técnica e riscos financeiros consideráveis.","somente é aceita caução em dinheiro.","não pode ser exigida garantia em contratos de obras.","o limite é de 25% em qualquer contrato."],1,["A garantia pode ser exigida, mas não é de 30%.","Art. 70: limite geral de 5% e, nos casos de grande vulto com risco, até 10%.","A escolha da modalidade (caução, seguro-garantia ou fiança) é do contratado.","A garantia pode ser exigida em obras, serviços e compras.","25% é o limite de acréscimos unilaterais (art. 81), não da garantia."],"Lei 13.303/2016, art. 70."),
+Q("Um contrato regido pela Lei 13.303/2016 que tem por objeto obra civil pode ter seu valor acrescido unilateralmente, nas mesmas condições contratuais, até o limite de",["10% do valor inicial atualizado.","25% do valor inicial atualizado.","50% para qualquer obra nova.","100% do valor inicial atualizado.","não há limite."],1,["Não é o percentual do art. 81.","Regra geral do art. 81: até 25%.","O limite de 50% aplica-se ao caso particular de reforma de edifício ou de equipamento, não a obra nova.","Excede os limites legais.","Há limites legais."],"Lei 13.303/2016, art. 81, §1º."),
+Q("Segundo a LC 123/2006, em licitação na modalidade pregão, considera-se empate ficto quando a proposta de microempresa ou empresa de pequeno porte for",["igual ou até 5% superior à melhor proposta classificada.","igual ou até 10% superior à melhor proposta classificada.","até 20% superior à melhor proposta.","inferior à melhor proposta.","igual à melhor proposta, apenas."],0,["No pregão, o intervalo é de até 5% (art. 44, §2º).","10% é o intervalo geral para as demais modalidades, não o do pregão.","Não é o percentual legal.","Proposta inferior já seria a melhor.","O empate ficto abrange também propostas até o limite percentual superior."],"LC 123/2006, art. 44.")
+]});
+
+MODS.push({n:6,t:"Tributos aplicáveis ao setor",edital:"IRPJ/CSLL, IRRF, ICMS, participações governamentais, PIS/PASEP, COFINS, CIDE, ISS, contribuição previdenciária, EC 132/2023, LC 214/2025",
+alerta:"Alíquotas, limites e regimes mudam com frequência (especialmente na reforma tributária, em transição). <b>Não consegui consultar os textos oficiais</b>: confirme cada número na legislação vigente. O edital pede \"conhecimentos básicos\".",
+intro:"O item de tributos do edital é amplo. O foco aqui é: qual tributo é de qual ente, o que tributa, o que é retenção na fonte e o que muda com a reforma (EC 132/2023 e LC 214/2025).",
+obj:["Identificar competência, incidência e natureza de cada tributo listado.","Distinguir regime cumulativo e não cumulativo de PIS/COFINS.","Entender a CIDE-combustíveis e as participações governamentais do petróleo.","Compreender IRRF e retenções na contratação de serviços.","Conhecer a estrutura da reforma tributária: CBS, IBS e Imposto Seletivo."],
+secs:[
+["1. IRPJ e CSLL","<ul><li><b>IRPJ</b>: tributo federal sobre o lucro das pessoas jurídicas. Alíquota de 15%, mais <b>adicional de 10%</b> sobre a parcela do lucro que exceder R$ 20 mil por mês (R$ 240 mil por ano). Regimes: lucro real, presumido e arbitrado (Lei 9.249/1995).</li><li><b>CSLL</b>: contribuição social sobre o lucro líquido, com alíquota geral de 9% (Lei 7.689/1988), maior para instituições financeiras.</li></ul>","Lei 9.249/1995 (art. 3º); Lei 7.689/1988; RIR/2018 (Decreto 9.580)."],
+["2. IRRF (Imposto de Renda Retido na Fonte)","<p>Mecanismo em que a fonte pagadora <b>retém e recolhe</b> o imposto de renda devido pelo beneficiário do rendimento (salários, serviços, aluguéis, juros, remessas ao exterior etc.). Funciona como <b>antecipação</b> do imposto devido ou como tributação definitiva, conforme o rendimento. Nos pagamentos de PJ a PJ por certos serviços, há retenção de IRRF e ainda das contribuições PIS, COFINS e CSLL (retenção conjunta de 4,65% sobre os pagamentos sujeitos à regra, Lei 10.833/2003, art. 30). Alíquotas de IRRF variam conforme a natureza do rendimento (consulte o RIR).</p>","RIR/2018; Lei 10.833/2003, art. 30."],
+["3. PIS/PASEP e COFINS","<p>Contribuições federais sobre receita/faturamento. Regime <b>não cumulativo</b> (geral para lucro real): PIS 1,65% e COFINS 7,6%, com direito a crédito sobre insumos e despesas listadas (Leis 10.637/2002 e 10.833/2003). Regime <b>cumulativo</b>: PIS 0,65% e COFINS 3% (Lei 9.718/1998), sem créditos. Combustíveis têm regime especial (incidência concentrada/monofásica) definido em lei.</p>","Leis 10.637/2002, 10.833/2003 e 9.718/1998."],
+["4. ICMS","<p>Imposto <b>estadual e distrital</b> sobre operações relativas à circulação de mercadorias e serviços de transporte interestadual e intermunicipal e de comunicação (CF, art. 155, II; LC 87/1996). É <b>não cumulativo</b>. Sobre operações com energia elétrica, telecomunicações, derivados de petróleo, combustíveis e minerais, nenhum outro imposto pode incidir além de ICMS, imposto de importação e imposto de exportação (CF, art. 155, §3º). A tributação monofásica de combustíveis foi introduzida pela LC 192/2022 (confira o regramento vigente).</p>","CF, art. 155; LC 87/1996; LC 192/2022."],
+["5. ISS","<p>Imposto <b>municipal e distrital</b> sobre serviços da lista da LC 116/2003, com alíquotas entre 2% e 5% (alíquota mínima e máxima definidas em lei complementar). Em regra, é devido no local do estabelecimento do prestador, com exceções previstas na lei (por exemplo, construção civil, no local da obra).</p>","LC 116/2003; CF, art. 156, III."],
+["6. Contribuição previdenciária","<p>Contribuição patronal de <b>20% sobre a folha</b> (Lei 8.212/1991, art. 22, I), acrescida do RAT (1%, 2% ou 3%, conforme o risco) e de contribuições a terceiros. Na contratação de serviços mediante <b>cessão de mão de obra</b> ou empreitada, a contratante retém <b>11%</b> do valor da nota e recolhe em nome do prestador (art. 31). Confira as regras de desoneração vigentes.</p>","Lei 8.212/1991, arts. 22 e 31."],
+["7. CIDE-combustíveis (Leis 10.336/2001 e 10.636/2002)","<p>Contribuição de Intervenção no Domínio Econômico incidente sobre a <b>importação e a comercialização no mercado interno</b> de gasolina, diesel, querosene de aviação e outros querosenes, óleos combustíveis, GLP e álcool etílico combustível. Contribuintes: produtor, formulador e importador. Alíquotas são fixadas em reais por unidade de medida (m³ ou tonelada) e podem ser reduzidas por ato do Poder Executivo. A Lei 10.636/2002 trata da aplicação dos recursos arrecadados (subsídios, projetos ambientais e infraestrutura de transportes, conforme a CF, art. 177, §4º).</p>","Lei 10.336/2001; Lei 10.636/2002; CF, art. 177, §4º."],
+["8. Participações governamentais","<p>Previstas na Lei 9.478/1997, art. 45: <b>bônus de assinatura</b>, <b>royalties</b>, <b>participação especial</b> (sobre campos de grande produção ou rentabilidade) e <b>pagamento pela ocupação ou retenção de área</b>. Os royalties são a compensação financeira pela exploração, calculados sobre a produção (a lei fixa 10% como alíquota básica, reduzível em certas condições). Não são tributos em sentido estrito, mas receitas patrimoniais.</p>","Lei 9.478/1997, arts. 45 a 52."],
+["9. Reforma tributária: EC 132/2023 e LC 214/2025","<p>A EC 132/2023 criou o <b>IBS</b> (imposto sobre bens e serviços, de competência de estados e municípios), a <b>CBS</b> (contribuição sobre bens e serviços, federal) e o <b>Imposto Seletivo</b> (sobre bens e serviços prejudiciais à saúde ou ao meio ambiente). O IBS substitui ICMS e ISS; a CBS substitui PIS e COFINS (e o IPI é reduzido). A LC 214/2025 regulamenta IBS, CBS e Imposto Seletivo. A transição é gradual (a partir de 2026, com fase de teste, e substituição progressiva até 2033). Princípios: não cumulatividade ampla, cobrança no destino e neutralidade.</p>","EC 132/2023; LC 214/2025 (confira o cronograma de transição)."]
+],
+mapa:`TRIBUTOS
+├── Federais: IRPJ (15% + 10% adicional > R$ 20 mil/mês), CSLL (9%),
+│             PIS/COFINS (não cumulativo 1,65% / 7,6%), CIDE, IRRF
+├── Estadual: ICMS | Municipal: ISS (2% a 5%)
+├── Previdência: 20% patronal + RAT; retenção de 11% (cessão de mão de obra)
+├── CIDE-combustíveis: importação e comercialização (Lei 10.336)
+├── Participações governamentais (art. 45, Lei 9.478):
+│   bônus de assinatura, royalties, participação especial, ocupação de área
+└── Reforma: CBS (federal) ← PIS/COFINS; IBS (estados/municípios) ← ICMS/ISS;
+    Imposto Seletivo; transição até 2033`,
+q:[
+Q("Nos termos usuais da legislação do IRPJ, incide adicional de 10% sobre a parcela do lucro que exceder, por mês,",["R$ 2.000,00.","R$ 20.000,00.","R$ 200.000,00.","R$ 2.000.000,00.","não há adicional."],1,["Valor abaixo do limite legal.","O adicional incide sobre a parcela do lucro que exceder R$ 20 mil por mês (R$ 240 mil por ano).","Valor acima do limite legal.","Valor acima do limite legal.","Existe adicional de 10%."],"Lei 9.249/1995, art. 3º."),
+Q("No regime não cumulativo, as alíquotas gerais de PIS/PASEP e COFINS são, respectivamente,",["0,65% e 3%.","1,65% e 7,6%.","9% e 15%.","2% e 5%.","7,6% e 1,65%."],1,["São as alíquotas do regime cumulativo.","São as alíquotas do regime não cumulativo (Leis 10.637/2002 e 10.833/2003).","Referem-se a CSLL e à alíquota-base do IRPJ.","2% a 5% é a faixa do ISS.","Inverte as alíquotas."],"Leis 10.637/2002 e 10.833/2003."),
+Q("A CIDE-combustíveis, instituída pela Lei 10.336/2001, incide sobre",["a folha de pagamento das distribuidoras.","a importação e a comercialização no mercado interno de combustíveis como gasolina, diesel e GLP, tendo como contribuintes o produtor, o formulador e o importador.","o lucro líquido das refinarias.","a exportação de petróleo bruto.","a prestação de serviços de transporte municipal."],1,["Trata-se da contribuição previdenciária.","Essa é a incidência da CIDE-combustíveis.","Isso é a CSLL.","A CIDE-combustíveis alcança importação e comercialização interna de combustíveis, não exportação de petróleo bruto.","Trata-se de ISS."],"Lei 10.336/2001."),
+Q("De acordo com a Lei 9.478/1997, NÃO integra o rol de participações governamentais",["bônus de assinatura.","royalties.","participação especial.","pagamento pela ocupação ou retenção de área.","imposto de importação."],4,["Integra o rol (art. 45).","Integra o rol.","Integra o rol.","Integra o rol.","O imposto de importação é tributo federal, sem relação com as participações do art. 45."],"Lei 9.478/1997, art. 45."),
+Q("Após a regulamentação da reforma tributária (EC 132/2023 e LC 214/2025), a CBS e o IBS passam a substituir, respectivamente,",["ISS e ICMS.","PIS/COFINS e ICMS/ISS.","IRPJ e CSLL.","IPVA e IPTU.","CIDE e royalties."],1,["Inverte a lógica: ISS e ICMS serão substituídos pelo IBS, em conjunto.","A CBS (federal) substitui PIS e COFINS; o IBS substitui ICMS e ISS.","Tributos sobre a renda não são substituídos.","Impostos patrimoniais não são substituídos.","Não são substituídos por CBS/IBS."],"EC 132/2023; LC 214/2025.")
+]});
+
+MODS.push({n:7,t:"Matemática financeira e avaliação econômica (VPL e TIR)",edital:"Matemática financeira; métodos de avaliação econômica; VPL e TIR",
+intro:"Base para análise de investimentos, contratos e financiamentos. As questões costumam pedir cálculo direto de juros compostos, taxas equivalentes, valor presente líquido e interpretação da TIR.",
+obj:["Aplicar juros simples e compostos.","Converter taxas (equivalentes, nominal, efetiva e real).","Calcular séries uniformes e comparar SAC e Price.","Calcular e interpretar VPL e TIR, e o payback."],
+secs:[
+["1. Juros simples e compostos","<ul><li>Simples: <code>J = C·i·n</code>; <code>M = C(1 + i·n)</code>.</li><li>Compostos: <code>M = C(1 + i)ⁿ</code>. Desconto composto: <code>C = M/(1 + i)ⁿ</code>.</li><li>Taxas <b>equivalentes</b> (compostas): <code>(1 + i_a) = (1 + i_m)¹²</code>. Taxas <b>proporcionais</b> (juros simples) dividem a taxa pelo número de períodos.</li><li>Taxa <b>nominal</b> (capitalização diferente do período da taxa) × <b>efetiva</b>.</li><li>Taxa <b>real</b>: <code>(1 + r) = (1 + i)/(1 + π)</code>, com π a inflação.</li></ul>","ASSAF NETO, A. <i>Matemática Financeira e suas Aplicações</i>, Atlas."],
+["2. Séries uniformes e amortização","<ul><li>Valor presente de série postecipada: <code>PV = PMT · [1 − (1 + i)⁻ⁿ]/i</code>. Valor futuro: <code>FV = PMT · [(1 + i)ⁿ − 1]/i</code>. Perpetuidade: <code>PV = PMT/i</code>.</li><li><b>SAC</b>: amortização constante; juros e prestações <b>decrescentes</b>.</li><li><b>Price (tabela Price)</b>: prestações constantes; amortização <b>crescente</b>, juros decrescentes.</li></ul>","ASSAF NETO."],
+["3. Avaliação de investimentos","<ul><li><b>VPL</b> = Σ FCₜ/(1 + k)ᵗ − I₀, com k = taxa mínima de atratividade (TMA/custo de capital). VPL &gt; 0: projeto cria valor (aceitar).</li><li><b>TIR</b>: taxa que <b>zera o VPL</b>. Regra: aceitar se TIR &gt; TMA.</li><li><b>Payback</b> simples: tempo para recuperar o investimento (ignora o valor do dinheiro no tempo e o fluxo após a recuperação); descontado usa fluxos trazidos a valor presente.</li><li>Fluxos com várias inversões de sinal podem ter mais de uma TIR; para projetos mutuamente exclusivos o VPL é o critério preferível.</li></ul>","BREALEY, R.; MYERS, S.; ALLEN, F. <i>Princípios de Finanças Corporativas</i>, AMGH; GITMAN, L. <i>Princípios de Administração Financeira</i>."]
+],
+mapa:`MATEMÁTICA FINANCEIRA
+├── Simples: M = C(1 + in)   Compostos: M = C(1 + i)^n
+├── Taxas: equivalente (compostas) × proporcional (simples); real = (1+i)/(1+π) − 1
+├── Séries: PV = PMT[1 − (1+i)^-n]/i;  SAC × Price
+└── Projetos: VPL > 0 aceita | TIR = taxa que zera VPL | aceita se TIR > TMA | payback`,
+q:[
+Q("O montante obtido pela aplicação de R$ 1.000,00 a juros compostos de 10% ao ano, por 2 anos, é de",["R$ 1.100,00.","R$ 1.200,00.","R$ 1.210,00.","R$ 1.220,00.","R$ 1.331,00."],2,["Um ano de juros apenas.","Seria o montante a juros simples em 2 anos.","M = 1000 · 1,1² = 1210.","Erro de cálculo.","Corresponde a 3 anos."],"Assaf Neto."),
+Q("A taxa anual equivalente, em juros compostos, a uma taxa de 1% ao mês é de aproximadamente",["12,00%.","12,68%.","13,00%.","11,50%.","10,00%."],1,["Seria a taxa proporcional (juros simples), não a equivalente.","1,01¹² − 1 ≈ 0,1268.","Sem base no cálculo.","Sem base no cálculo.","Sem base no cálculo."],"Assaf Neto."),
+Q("Um projeto exige investimento inicial de R$ 1.000,00 e retorna R$ 600,00 ao final de cada um dos dois anos seguintes. Adotando taxa mínima de atratividade de 10% ao ano, o VPL é de aproximadamente",["R$ 200,00.","R$ 41,30.","−R$ 41,30.","R$ 100,00.","zero."],1,["Soma fluxos sem descontar (1200 − 1000).","VPL = 600/1,1 + 600/1,21 − 1000 ≈ 545,45 + 495,87 − 1000 ≈ 41,3.","Sinal invertido.","Sem base no cálculo.","VPL zero ocorreria se a TIR fosse exatamente 10%."],"Brealey; Myers; Allen."),
+Q("Um investimento de R$ 100,00 gera um único retorno de R$ 121,00 ao final do segundo ano. A taxa interna de retorno (TIR) é de",["10% ao ano.","21% ao ano.","11% ao ano.","5% ao ano.","20% ao ano."],0,["100·(1 + i)² = 121, então 1 + i = 1,1 e i = 10%.","21% é o ganho total no período, não a taxa anual.","Sem base no cálculo.","Sem base no cálculo.","Sem base no cálculo."],"Definição de TIR (Brealey; Myers; Allen)."),
+Q("Sobre os sistemas de amortização, é correto afirmar que",["no SAC as prestações são constantes e a amortização cresce.","na tabela Price as prestações são constantes e a parcela de juros decresce ao longo do tempo.","no SAC a amortização é decrescente.","na tabela Price a amortização é constante.","em ambos os sistemas a parcela de juros é constante."],1,["No SAC a amortização é constante e as prestações decrescem.","Na Price a prestação é constante; a amortização cresce e os juros decrescem.","No SAC a amortização é constante.","Na Price a amortização é crescente.","A parcela de juros decresce nos dois, pois incide sobre saldo devedor decrescente."],"Assaf Neto.")
+]});
+
+MODS.push({n:8,t:"Noções de micro e macroeconomia",edital:"Noções elementares de micro e macroeconomia",
+intro:"Conceitos básicos: formação de preços, elasticidades, estruturas de mercado e indicadores e políticas macroeconômicas. Úteis para entender a comercialização de combustíveis e o ambiente de negócios.",
+obj:["Analisar oferta, demanda e equilíbrio.","Calcular e interpretar elasticidades.","Distinguir estruturas de mercado.","Explicar PIB, inflação, política monetária e fiscal, câmbio e balanço de pagamentos."],
+secs:[
+["1. Demanda, oferta e equilíbrio","<ul><li>Lei da demanda: preço sobe, quantidade demandada cai (<i>ceteris paribus</i>). Lei da oferta: preço sobe, quantidade ofertada sobe.</li><li>Variação do <b>preço do próprio bem</b> = movimento <b>ao longo</b> da curva. Variação de renda, preços de outros bens, preferências ou expectativas = <b>deslocamento</b> da curva.</li><li>Bens normais (demanda sobe com a renda) e inferiores; <b>substitutos</b> (preço de um sobe, demanda do outro sobe) e <b>complementares</b>.</li><li>Equilíbrio: preço em que quantidade demandada = ofertada.</li></ul>","MANKIW, N. G. <i>Introdução à Economia</i>; VASCONCELLOS, M. A. S. <i>Economia: Micro e Macro</i>, Atlas."],
+["2. Elasticidades","<ul><li><b>Elasticidade-preço da demanda</b>: E = %ΔQ / %ΔP. |E| &gt; 1: elástica; |E| &lt; 1: inelástica; |E| = 1: unitária.</li><li>Demanda <b>inelástica</b>: aumento de preço <b>eleva</b> a receita total. Demanda <b>elástica</b>: aumento de preço reduz a receita.</li><li>Elasticidade-renda e elasticidade cruzada (positiva entre substitutos, negativa entre complementares).</li></ul>","MANKIW; PINDYCK, R.; RUBINFELD, D. <i>Microeconomia</i>."],
+["3. Estruturas de mercado e custos","<ul><li>Concorrência perfeita (muitos agentes, preço dado); monopólio (um vendedor); oligopólio (poucos vendedores, interdependência); concorrência monopolística (diferenciação).</li><li>Custos: fixos, variáveis, totais, médios e <b>marginal</b>. Empresas maximizam lucro onde receita marginal = custo marginal. Economias de escala: custo médio decresce com a produção.</li><li>Falhas de mercado: externalidades, bens públicos, assimetria de informação.</li></ul>","MANKIW; PINDYCK; RUBINFELD."],
+["4. Macroeconomia","<ul><li><b>PIB</b>: valor dos bens e serviços finais produzidos. Ótica da despesa: <code>Y = C + I + G + X − M</code>.</li><li><b>Inflação</b>: aumento geral e persistente de preços (medida no Brasil por índices como o IPCA).</li><li><b>Política monetária</b>: controle de juros e liquidez (no Brasil, o Copom define a meta da taxa Selic). Alta de juros tende a conter demanda e inflação. <b>Política fiscal</b>: gastos e tributos do governo.</li><li><b>Câmbio</b>: depreciação da moeda local encarece importações e favorece exportações. <b>Balanço de pagamentos</b>: transações correntes, conta capital e conta financeira.</li></ul>","MANKIW, N. G. <i>Macroeconomia</i>; VASCONCELLOS."]
+],
+mapa:`ECONOMIA
+├── Micro: demanda/oferta, equilíbrio; deslocamento × movimento
+│   ├── Elasticidade: |E| > 1 elástica; inelástica → preço ↑ = receita ↑
+│   └── Mercados: concorrência perfeita, monopólio, oligopólio
+└── Macro: PIB = C + I + G + X − M; inflação (IPCA); Selic (Copom)
+    └── Câmbio; balanço de pagamentos; política fiscal × monetária`,
+q:[
+Q("Se o preço de um bem aumenta 10% e a quantidade demandada diminui 5%, a elasticidade-preço da demanda, em módulo, é",["0,5, e a demanda é inelástica.","2,0, e a demanda é elástica.","1,0, e a demanda é unitária.","0,5, e a demanda é elástica.","5,0, e a demanda é inelástica."],0,["|E| = 5/10 = 0,5 < 1: inelástica.","Seria o resultado de dividir 10 por 5.","Exigiria variações iguais.","0,5 indica demanda inelástica, não elástica.","Erro de cálculo."],"Mankiw; Pindyck e Rubinfeld."),
+Q("Um aumento da renda dos consumidores, para um bem normal, tende a",["deslocar a curva de demanda para a direita.","deslocar a curva de demanda para a esquerda.","provocar movimento ao longo da curva de oferta apenas.","reduzir a quantidade de equilíbrio.","não afetar a demanda."],0,["Bens normais têm demanda crescente com a renda.","Seria o caso de um bem inferior.","O efeito primário é sobre a demanda.","Com demanda maior, a quantidade de equilíbrio tende a aumentar.","A renda é determinante da demanda."],"Mankiw."),
+Q("Pela ótica da despesa, o PIB é dado por",["C + I + G + X − M.","C + I + G − X + M.","C + I − G + X − M.","C − I + G + X + M.","apenas C + G."],0,["Consumo + investimento + gastos do governo + exportações − importações.","Sinais de X e M invertidos.","G tem sinal positivo.","I tem sinal positivo e M, negativo.","Omite componentes."],"Mankiw; Vasconcellos."),
+Q("Se o preço do etanol aumenta, mantidas as demais condições, tende a aumentar a demanda por gasolina, o que ilustra que os dois bens são",["complementares.","substitutos.","inferiores.","bens públicos.","de Giffen."],1,["Complementares teriam demanda que cai quando o preço do outro sobe.","Elasticidade cruzada positiva indica bens substitutos.","Bem inferior refere-se à relação com a renda.","Bem público refere-se a não rivalidade e não exclusão.","Bem de Giffen é caso particular de bem inferior."],"Mankiw."),
+Q("Uma política monetária contracionista, como a elevação da taxa Selic, tende, em geral, a",["estimular a demanda agregada e a inflação.","reduzir a demanda agregada e conter a inflação.","reduzir tributos diretamente.","aumentar os gastos do governo.","depreciar automaticamente o real sem outros efeitos."],1,["Seria o efeito de política expansionista.","Juros maiores encarecem crédito e reduzem consumo e investimento.","Alterar tributos é política fiscal.","Gastos do governo são política fiscal.","Os efeitos cambiais dependem de vários fatores; o efeito principal é sobre demanda e inflação."],"Mankiw, Macroeconomia.")
+]});
+
+MODS.push({n:9,t:"Matemática: lógica, conjuntos, funções, logaritmos, trigonometria, matrizes e progressões",edital:"Lógica; conjuntos; relações; funções; logaritmos; trigonometria; cálculo vetorial e matricial; progressões; sistemas de numeração",
+alerta:"Módulo de revisão. A profundidade cobrada não é informada no edital; pratique com muitas questões de provas anteriores da Cesgranrio.",
+intro:"Resumo das ferramentas matemáticas listadas no edital, com foco nas fórmulas e propriedades mais cobradas.",
+obj:["Negar e simplificar proposições.","Resolver problemas com conjuntos e classificar relações e funções.","Usar propriedades de logaritmos e relações trigonométricas.","Operar matrizes e vetores.","Aplicar PA e PG e converter entre bases de numeração."],
+secs:[
+["1. Lógica proposicional","<ul><li>Conectivos: ∧ (e), ∨ (ou), → (se...então), ↔ (se e somente se), ~ (não).</li><li>A condicional <code>p → q</code> só é falsa quando p é verdadeira e q é falsa.</li><li>Negação: <code>~(p → q) ≡ p ∧ ~q</code>; De Morgan: <code>~(p ∧ q) ≡ ~p ∨ ~q</code> e <code>~(p ∨ q) ≡ ~p ∧ ~q</code>.</li><li>Equivalência: <code>p → q ≡ ~q → ~p ≡ ~p ∨ q</code>.</li><li>Quantificadores: negar \"todo A é B\" resulta em \"algum A não é B\".</li></ul>","Matemática discreta (p. ex., GERSTING, J. <i>Fundamentos Matemáticos para a Ciência da Computação</i>, LTC)."],
+["2. Conjuntos, relações e funções","<ul><li><code>|A ∪ B| = |A| + |B| − |A ∩ B|</code>; complemento; produto cartesiano.</li><li>Relação: reflexiva, simétrica, antissimétrica, transitiva. <b>Equivalência</b> = reflexiva + simétrica + transitiva. <b>Ordem parcial</b> = reflexiva + antissimétrica + transitiva.</li><li>Função: cada elemento do domínio tem <b>exatamente uma</b> imagem. Injetora, sobrejetora e bijetora (admite inversa). Afim <code>f(x) = ax + b</code>; quadrática com vértice em <code>x = −b/2a</code> e <code>Δ = b² − 4ac</code>; exponencial <code>aˣ</code>.</li></ul>","IEZZI, G.; MURAKAMI, C. <i>Fundamentos de Matemática Elementar</i>, Atual."],
+["3. Logaritmos","<ul><li><code>log_b(xy) = log_b x + log_b y</code>; <code>log_b(x/y) = log_b x − log_b y</code>; <code>log_b xᵏ = k·log_b x</code>.</li><li>Mudança de base: <code>log_b x = log_c x / log_c b</code>. <code>log_b b = 1</code>; <code>log_b 1 = 0</code>.</li><li>Existência: base positiva e diferente de 1; logaritmando positivo.</li></ul>","IEZZI; MURAKAMI."],
+["4. Trigonometria","<ul><li><code>sen²x + cos²x = 1</code>; <code>tg x = sen x/cos x</code>; π rad = 180°.</li><li>Valores notáveis: sen 30° = 1/2, sen 45° = √2/2, sen 60° = √3/2 (e cos nos ângulos complementares).</li><li>Lei dos senos e dos cossenos para triângulos quaisquer: <code>a² = b² + c² − 2bc·cos A</code>.</li></ul>","IEZZI et al."],
+["5. Vetores e matrizes","<ul><li>Produto escalar: <code>u·v = Σ uᵢvᵢ = |u||v|cos θ</code>; vetores ortogonais têm produto escalar nulo. Módulo: <code>|u| = √(u·u)</code>.</li><li>Produto de matrizes: (m×n)·(n×p) resulta em m×p (linhas por colunas), não é comutativo.</li><li>Determinante 2×2: <code>ad − bc</code>. A matriz é invertível se det ≠ 0. <code>det(AB) = det A · det B</code>.</li></ul>","BOLDRINI, J. L. et al. <i>Álgebra Linear</i>, Harbra."],
+["6. Progressões e sistemas de numeração","<ul><li><b>PA</b>: <code>aₙ = a₁ + (n − 1)r</code>; <code>Sₙ = (a₁ + aₙ)·n/2</code>.</li><li><b>PG</b>: <code>aₙ = a₁·qⁿ⁻¹</code>; <code>Sₙ = a₁(qⁿ − 1)/(q − 1)</code>; soma infinita com |q| &lt; 1: <code>a₁/(1 − q)</code>.</li><li><b>Numeração posicional</b>: em base b, cada dígito vale dígito × bᵖᵒˢⁱçãᵒ. Binário para decimal: some as potências de 2 dos bits 1. Decimal para binário: divisões sucessivas por 2. Hexadecimal usa 0 a 9 e A a F; 1 byte = 8 bits.</li></ul>","IEZZI et al."]
+],
+mapa:`MATEMÁTICA
+├── Lógica: ~(p→q) ≡ p ∧ ~q; contrapositiva; De Morgan
+├── Conjuntos: |A∪B| = |A| + |B| − |A∩B|; relações e funções
+├── Log: produto → soma; potência → coeficiente; mudança de base
+├── Trigonometria: sen² + cos² = 1; ângulos notáveis
+├── Vetores/matrizes: produto escalar; det 2×2 = ad − bc
+└── PA/PG; bases 2, 8, 10, 16`,
+q:[
+Q("A negação da proposição \"Se o duto está pressurizado, então a válvula está fechada\" é",["Se o duto não está pressurizado, então a válvula não está fechada.","O duto está pressurizado e a válvula não está fechada.","O duto não está pressurizado e a válvula está fechada.","Se a válvula está fechada, então o duto está pressurizado.","O duto não está pressurizado ou a válvula está fechada."],1,["Não é a negação; é a inversa da condicional.","~(p → q) ≡ p ∧ ~q.","Não corresponde à negação.","É a recíproca, não a negação.","Esta é a forma equivalente à própria condicional (~p ∨ q)."],"Lógica proposicional."),
+Q("Em um grupo de 100 clientes, 60 compram gasolina, 45 compram diesel e 20 compram ambos. O número de clientes que não compram nenhum dos dois é",["5.","10.","15.","20.","25."],2,["Erro de cálculo.","Erro de cálculo.","|A ∪ B| = 60 + 45 − 20 = 85; 100 − 85 = 15.","Corresponde ao número dos que compram ambos.","Erro de cálculo."],"Princípio da inclusão-exclusão."),
+Q("O valor de log₂ 32 + log₃ 81 é",["7.","8.","9.","10.","12."],2,["Erro de cálculo.","Erro de cálculo.","log₂ 32 = 5 e log₃ 81 = 4, soma 9.","Erro de cálculo.","Erro de cálculo."],"Definição de logaritmo."),
+Q("Em uma progressão aritmética com primeiro termo 5 e razão 3, a soma dos 20 primeiros termos é",["570.","600.","670.","700.","1140."],2,["Erro de cálculo.","Erro de cálculo.","a₂₀ = 5 + 19·3 = 62; S = (5 + 62)·20/2 = 670.","Erro de cálculo.","Erro de cálculo (dobro do valor de 570)."],"Progressão aritmética."),
+Q("O número binário 101101 corresponde, na base decimal, a",["35.","41.","45.","49.","53."],2,["Erro de conversão.","Erro de conversão.","32 + 8 + 4 + 1 = 45.","Erro de conversão.","Erro de conversão."],"Sistemas de numeração posicionais.")
+]});
+
+MODS.push({n:10,t:"Estatística descritiva, análise combinatória e probabilidade",edital:"Análise combinatória; probabilidade; estatística descritiva",
+intro:"Revisão das medidas de posição e dispersão, técnicas de contagem e regras de probabilidade mais cobradas em provas.",
+obj:["Calcular média, mediana, moda, variância, desvio padrão e coeficiente de variação.","Prever o efeito de transformações lineares nos dados.","Aplicar arranjos, combinações e permutações.","Calcular probabilidades (união, condicional, independência, binomial)."],
+secs:[
+["1. Estatística descritiva","<ul><li><b>Média</b> <code>x̄ = Σxᵢ/n</code>; <b>mediana</b> (valor central); <b>moda</b> (mais frequente).</li><li><b>Variância populacional</b> <code>σ² = Σ(xᵢ − μ)²/N</code>; amostral divide por <code>n − 1</code>. <b>Desvio padrão</b> = √variância. <b>Coeficiente de variação</b> = desvio/média.</li><li>Média &gt; mediana sugere assimetria positiva (cauda à direita).</li><li>Transformação <code>y = a·x + b</code>: média → a·x̄ + b; desvio padrão → |a|·s; variância → a²·s². Somar constante não altera a dispersão.</li></ul>","BUSSAB, W.; MORETTIN, P. <i>Estatística Básica</i>, Saraiva."],
+["2. Análise combinatória","<ul><li>Princípio multiplicativo: etapas independentes multiplicam-se.</li><li>Permutação: <code>n!</code>; com repetição: <code>n!/(a!·b!·...)</code>. Circular: <code>(n − 1)!</code>.</li><li>Arranjo (ordem importa): <code>A(n,p) = n!/(n − p)!</code>.</li><li>Combinação (ordem não importa): <code>C(n,p) = n!/[p!(n − p)!]</code>.</li></ul>","IEZZI et al., <i>Fundamentos de Matemática Elementar</i>, vol. 5."],
+["3. Probabilidade","<ul><li><code>P(A) = casos favoráveis/casos possíveis</code> (espaço equiprovável). Complemento: <code>1 − P(A)</code>.</li><li>União: <code>P(A ∪ B) = P(A) + P(B) − P(A ∩ B)</code>.</li><li>Condicional: <code>P(A|B) = P(A ∩ B)/P(B)</code>. Independência: <code>P(A ∩ B) = P(A)·P(B)</code>.</li><li>Binomial: <code>P(X = k) = C(n,k)·pᵏ·(1 − p)ⁿ⁻ᵏ</code>; esperança <code>np</code>.</li></ul>","BUSSAB; MORETTIN; MEYER, P. <i>Probabilidade: Aplicações à Estatística</i>, LTC."]
+],
+mapa:`ESTATÍSTICA E PROBABILIDADE
+├── Média, mediana, moda; variância, desvio padrão, CV
+│   └── y = ax + b → média a·x̄ + b; DP |a|·s
+├── Contagem: n!, arranjo, combinação, permutação com repetição
+└── Probabilidade: união, condicional, independência, binomial`,
+q:[
+Q("Para o conjunto de dados 2, 4, 4, 4, 5, 5, 7, 9, o desvio padrão populacional é",["1.","2.","3.","4.","5."],1,["Erro de cálculo.","Média 5; soma dos quadrados dos desvios = 32; variância = 32/8 = 4; desvio padrão = 2.","Erro de cálculo.","4 é a variância, não o desvio padrão.","5 é a média."],"Bussab e Morettin."),
+Q("Um conjunto de dados tem média 5 e desvio padrão 2. Se cada valor for multiplicado por 3 e acrescido de 2, a nova média e o novo desvio padrão serão, respectivamente,",["17 e 6.","17 e 8.","15 e 6.","15 e 8.","17 e 2."],0,["Média = 3·5 + 2 = 17; desvio padrão = 3·2 = 6 (somar constante não altera a dispersão).","O desvio padrão não recebe a constante somada.","A média inclui a constante somada.","Erro em ambos.","O desvio padrão é multiplicado por 3."],"Propriedades de transformação linear."),
+Q("De um grupo de 8 pessoas será escolhida uma comissão de 3 membros, sem funções distintas. O número de comissões possíveis é",["24.","56.","112.","336.","512."],1,["Erro de cálculo.","C(8,3) = 8!/(3!·5!) = 56.","Erro de cálculo.","É A(8,3), que considera a ordem.","É 8³."],"Combinação simples."),
+Q("O número de anagramas da palavra TRANSPETRO é",["3.628.800.","907.200.","1.814.400.","453.600.","10."],1,["Seria 10! sem considerar letras repetidas.","Há 10 letras, com T e R repetidas duas vezes: 10!/(2!·2!) = 907.200.","Corresponde a dividir por 2 apenas uma vez.","Erro de cálculo.","Erro de cálculo."],"Permutação com repetição."),
+Q("Lançando-se uma moeda honesta 3 vezes, a probabilidade de obter exatamente duas caras é",["1/8.","3/8.","1/2.","5/8.","3/4."],1,["É a probabilidade de exatamente 3 caras.","C(3,2)·(1/2)³ = 3/8.","Erro de cálculo.","É o complemento de 3/8.","Erro de cálculo."],"Distribuição binomial.")
+]});
+
+MODS.push({n:11,t:"Gases, termologia, unidades e conversões",edital:"Relações entre volume, pressão e temperatura; termologia; sistemas de unidades; conversões",
+intro:"Este módulo reúne a base física do edital: comportamento de gases, escalas de temperatura, calor e conversão de unidades típicas do setor de petróleo (barril, m³, atm, psi).",
+obj:["Aplicar a equação dos gases ideais e as transformações isotérmica, isobárica e isocórica.","Converter escalas de temperatura (°C, °F, K).","Calcular calor sensível e latente.","Converter unidades de volume, pressão e energia."],
+secs:[
+["1. Gases ideais","<p><code>PV = nRT</code>, com T sempre em <b>kelvin</b> (K = °C + 273,15; na prática, +273). R ≈ 0,082 atm·L/(mol·K) ≈ 8,314 J/(mol·K).</p><ul><li><b>Boyle</b> (T constante): P₁V₁ = P₂V₂.</li><li><b>Charles</b> (P constante): V₁/T₁ = V₂/T₂.</li><li><b>Gay-Lussac</b> (V constante): P₁/T₁ = P₂/T₂.</li><li>Geral: P₁V₁/T₁ = P₂V₂/T₂.</li><li>Volume molar nas CNTP (0 °C, 1 atm): 22,4 L/mol.</li></ul>","Física básica do ensino médio e superior (p. ex., HALLIDAY; RESNICK; WALKER, <i>Fundamentos de Física</i>, LTC)."],
+["2. Termologia","<ul><li>Escalas: <code>F = 1,8·C + 32</code>; <code>K = C + 273</code>.</li><li>Calor sensível: <code>Q = m·c·ΔT</code> (muda a temperatura). Água: c = 1 cal/(g·°C) ≈ 4,18 J/(g·K).</li><li>Calor latente: <code>Q = m·L</code> (muda o estado, temperatura constante).</li><li>Dilatação linear: <code>ΔL = L₀·α·ΔT</code>; superficial ≈ 2α; volumétrica ≈ 3α. Líquidos dilatam em tanques com a temperatura, o que importa na medição de volumes.</li><li>Transmissão de calor: condução, convecção e irradiação.</li></ul>","HALLIDAY; RESNICK; WALKER."],
+["3. Sistemas de unidades e conversões","<table><tr><th>Grandeza</th><th>Conversão útil</th></tr><tr><td>Volume</td><td>1 bbl (barril) = 42 galões US ≈ 158,987 L ≈ 0,159 m³; 1 m³ = 1000 L ≈ 6,29 bbl; 1 galão US ≈ 3,785 L; 1 ft³ ≈ 28,317 L</td></tr><tr><td>Pressão</td><td>1 atm = 101 325 Pa = 760 mmHg ≈ 1,013 bar; 1 bar = 10⁵ Pa; 1 psi ≈ 6895 Pa; 1 kgf/cm² ≈ 98 066 Pa</td></tr><tr><td>Energia</td><td>1 cal = 4,1868 J; 1 kWh = 3,6 MJ; 1 BTU ≈ 1055 J</td></tr><tr><td>Comprimento e velocidade</td><td>1 milha náutica = 1852 m; 1 nó = 1 milha náutica/h ≈ 0,514 m/s</td></tr><tr><td>Massa e densidade</td><td>ρ = m/V; conversão volume ↔ massa depende da densidade do produto</td></tr></table><p>SI: metro, quilograma, segundo, ampère, kelvin, mol e candela. Prefixos: k (10³), M (10⁶), G (10⁹), m (10⁻³), µ (10⁻⁶).</p>","INMETRO (Sistema Internacional de Unidades); fatores de conversão padrão."]
+],
+mapa:`FÍSICA APLICADA
+├── Gases: PV = nRT (T em K)
+│   ├── Boyle (T cte)  Charles (P cte)  Gay-Lussac (V cte)
+├── Termologia: F = 1,8C + 32; K = C + 273
+│   ├── Q = m·c·ΔT (sensível)   Q = m·L (latente)
+│   └── Dilatação: ΔL = L0·α·ΔT
+└── Unidades: 1 bbl ≈ 159 L; 1 atm = 101 325 Pa; 1 cal = 4,1868 J`,
+q:[
+Q("Dois mols de um gás ideal ocupam, a 300 K e 1 atm, um volume de (use R = 0,082 atm·L/mol·K)",["24,6 L.","49,2 L.","98,4 L.","4,92 L.","12,3 L."],1,["Corresponde a 1 mol.","V = nRT/P = 2·0,082·300/1 = 49,2 L.","Seria o resultado com 4 mols.","Erro de fator de 10.","Corresponde a 0,5 mol."],"Equação dos gases ideais."),
+Q("Um gás ideal, mantido em volume constante, está a 27 °C e 2 atm. Ao ser aquecido até 127 °C, sua pressão, em atm, passa a ser aproximadamente",["2,67.","4,00.","9,41.","1,50.","2,00."],0,["P₂ = P₁·T₂/T₁ = 2·400/300 ≈ 2,67 atm (Gay-Lussac, com T em kelvin).","Resultaria de dobrar a pressão, sem base na relação em kelvin.","Resultaria do erro de usar as temperaturas em °C.","A pressão aumenta com o aquecimento a volume constante.","A pressão não permanece constante."],"Lei de Gay-Lussac."),
+Q("Uma temperatura de 50 °C corresponde, nas escalas Kelvin e Fahrenheit, respectivamente, a",["323 K e 122 °F.","223 K e 122 °F.","323 K e 90 °F.","273 K e 50 °F.","373 K e 212 °F."],0,["K = 50 + 273 = 323; F = 1,8·50 + 32 = 122.","223 K seria −50 °C.","F = 1,8·50 + 32 = 122, não 90.","Ignora a conversão.","São os valores do ponto de ebulição da água (100 °C)."],"Conversão entre escalas termométricas."),
+Q("Para aquecer 2 kg de água líquida de 20 °C a 70 °C, sem mudança de estado, considerando c = 1 cal/(g·°C), é necessária uma quantidade de calor de",["10 kcal.","50 kcal.","100 kcal.","140 kcal.","1000 kcal."],2,["Erro de escala na conta.","Usaria massa de 1 kg.","Q = m·c·ΔT = 2000·1·50 = 100 000 cal = 100 kcal.","Confunde ΔT com a soma das temperaturas (70 + 20 = 90) ou outro erro.","Erro de fator de 10."],"Calor sensível: Q = m·c·ΔT."),
+Q("Considerando 1 barril ≈ 158,987 litros, um volume de 1000 barris equivale a aproximadamente",["63 m³.","159 m³.","1590 m³.","6,29 m³.","15,9 m³."],1,["Resultado de dividir por 15,9 em vez de multiplicar por 0,159.","1000 · 158,987 L = 158 987 L ≈ 159 m³.","Erro de fator de 10.","Corresponde a 1 m³ em barris (≈ 6,29), não o inverso.","Erro de fator de 10."],"Fatores de conversão padrão da indústria do petróleo.")
+]});
+
+</script></body></html>

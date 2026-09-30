@@ -1,0 +1,20 @@
+MODS.push({n:10,t:"Estatística descritiva, análise combinatória e probabilidade",edital:"Análise combinatória; probabilidade; estatística descritiva",
+intro:"Revisão das medidas de posição e dispersão, técnicas de contagem e regras de probabilidade mais cobradas em provas.",
+obj:["Calcular média, mediana, moda, variância, desvio padrão e coeficiente de variação.","Prever o efeito de transformações lineares nos dados.","Aplicar arranjos, combinações e permutações.","Calcular probabilidades (união, condicional, independência, binomial)."],
+secs:[
+["1. Estatística descritiva","<ul><li><b>Média</b> <code>x̄ = Σxᵢ/n</code>; <b>mediana</b> (valor central); <b>moda</b> (mais frequente).</li><li><b>Variância populacional</b> <code>σ² = Σ(xᵢ − μ)²/N</code>; amostral divide por <code>n − 1</code>. <b>Desvio padrão</b> = √variância. <b>Coeficiente de variação</b> = desvio/média.</li><li>Média &gt; mediana sugere assimetria positiva (cauda à direita).</li><li>Transformação <code>y = a·x + b</code>: média → a·x̄ + b; desvio padrão → |a|·s; variância → a²·s². Somar constante não altera a dispersão.</li></ul>","BUSSAB, W.; MORETTIN, P. <i>Estatística Básica</i>, Saraiva."],
+["2. Análise combinatória","<ul><li>Princípio multiplicativo: etapas independentes multiplicam-se.</li><li>Permutação: <code>n!</code>; com repetição: <code>n!/(a!·b!·...)</code>. Circular: <code>(n − 1)!</code>.</li><li>Arranjo (ordem importa): <code>A(n,p) = n!/(n − p)!</code>.</li><li>Combinação (ordem não importa): <code>C(n,p) = n!/[p!(n − p)!]</code>.</li></ul>","IEZZI et al., <i>Fundamentos de Matemática Elementar</i>, vol. 5."],
+["3. Probabilidade","<ul><li><code>P(A) = casos favoráveis/casos possíveis</code> (espaço equiprovável). Complemento: <code>1 − P(A)</code>.</li><li>União: <code>P(A ∪ B) = P(A) + P(B) − P(A ∩ B)</code>.</li><li>Condicional: <code>P(A|B) = P(A ∩ B)/P(B)</code>. Independência: <code>P(A ∩ B) = P(A)·P(B)</code>.</li><li>Binomial: <code>P(X = k) = C(n,k)·pᵏ·(1 − p)ⁿ⁻ᵏ</code>; esperança <code>np</code>.</li></ul>","BUSSAB; MORETTIN; MEYER, P. <i>Probabilidade: Aplicações à Estatística</i>, LTC."]
+],
+mapa:`ESTATÍSTICA E PROBABILIDADE
+├── Média, mediana, moda; variância, desvio padrão, CV
+│   └── y = ax + b → média a·x̄ + b; DP |a|·s
+├── Contagem: n!, arranjo, combinação, permutação com repetição
+└── Probabilidade: união, condicional, independência, binomial`,
+q:[
+Q("Para o conjunto de dados 2, 4, 4, 4, 5, 5, 7, 9, o desvio padrão populacional é",["1.","2.","3.","4.","5."],1,["Erro de cálculo.","Média 5; soma dos quadrados dos desvios = 32; variância = 32/8 = 4; desvio padrão = 2.","Erro de cálculo.","4 é a variância, não o desvio padrão.","5 é a média."],"Bussab e Morettin."),
+Q("Um conjunto de dados tem média 5 e desvio padrão 2. Se cada valor for multiplicado por 3 e acrescido de 2, a nova média e o novo desvio padrão serão, respectivamente,",["17 e 6.","17 e 8.","15 e 6.","15 e 8.","17 e 2."],0,["Média = 3·5 + 2 = 17; desvio padrão = 3·2 = 6 (somar constante não altera a dispersão).","O desvio padrão não recebe a constante somada.","A média inclui a constante somada.","Erro em ambos.","O desvio padrão é multiplicado por 3."],"Propriedades de transformação linear."),
+Q("De um grupo de 8 pessoas será escolhida uma comissão de 3 membros, sem funções distintas. O número de comissões possíveis é",["24.","56.","112.","336.","512."],1,["Erro de cálculo.","C(8,3) = 8!/(3!·5!) = 56.","Erro de cálculo.","É A(8,3), que considera a ordem.","É 8³."],"Combinação simples."),
+Q("O número de anagramas da palavra TRANSPETRO é",["3.628.800.","907.200.","1.814.400.","453.600.","10."],1,["Seria 10! sem considerar letras repetidas.","Há 10 letras, com T e R repetidas duas vezes: 10!/(2!·2!) = 907.200.","Corresponde a dividir por 2 apenas uma vez.","Erro de cálculo.","Erro de cálculo."],"Permutação com repetição."),
+Q("Lançando-se uma moeda honesta 3 vezes, a probabilidade de obter exatamente duas caras é",["1/8.","3/8.","1/2.","5/8.","3/4."],1,["É a probabilidade de exatamente 3 caras.","C(3,2)·(1/2)³ = 3/8.","Erro de cálculo.","É o complemento de 3/8.","Erro de cálculo."],"Distribuição binomial.")
+]});
