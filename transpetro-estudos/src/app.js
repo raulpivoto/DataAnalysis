@@ -6,34 +6,36 @@ const store={get(k){try{return JSON.parse(localStorage.getItem("tp-"+k))}catch(e
 const mods=()=>MODS.slice().sort((a,b)=>a.n-b.n);
 
 function quiz(host,qs,key){
-  let done=false;
-  host.innerHTML=`<div class="qs"></div><p><button class="btn" data-a="ok">Corrigir</button> <button class="btn sec" data-a="re">Refazer</button></p><div class="res" aria-live="polite"></div>`;
+  let marc=[];
+  host.innerHTML=`<div class="qs"></div><p><button class="btn" data-a="ok">Ver resultado</button> <button class="btn sec" data-a="re">Refazer</button></p><div class="res" aria-live="polite"></div>`;
   const box=host.querySelector(".qs"),res=host.querySelector(".res");
   function draw(){
-    done=false;res.textContent="";
+    marc=qs.map(()=>-1);res.textContent="";
     box.innerHTML=qs.map((q,i)=>`<div class="q card"><p class="en">Questão ${i+1}${q.m?` <span class="tag">${q.m}</span>`:""}. ${q.e}</p>`+
       q.o.map((t,j)=>`<label class="opt"><input type="radio" name="${key}q${i}" value="${j}"><span><b>(${L[j]})</b> ${t}</span></label>`).join("")+`<div class="fb"></div></div>`).join("");
   }
-  box.addEventListener("change",e=>{if(done||e.target.type!=="radio")return;
-    e.target.closest(".q").querySelectorAll(".opt").forEach(x=>x.classList.remove("sel"));e.target.closest(".opt").classList.add("sel")});
+  function finish(){
+    const ac=qs.filter((q,i)=>marc[i]===q.a).length;
+    const un=marc.filter(m=>m<0).length;
+    res.textContent=`Resultado: ${ac} de ${qs.length} (${Math.round(100*ac/qs.length)}%)`+(un?` · ${un} sem resposta`:"");
+    const p=store.get("prog")||{};p[key]={ac,n:qs.length};store.set("prog",p);
+  }
+  box.addEventListener("change",e=>{
+    if(e.target.type!=="radio")return;
+    const b=e.target.closest(".q"),i=[...box.children].indexOf(b),q=qs[i],j=+e.target.value;
+    if(marc[i]>=0)return;
+    marc[i]=j;
+    b.querySelectorAll(".opt").forEach((o,k)=>{o.querySelector("input").disabled=true;
+      if(k===q.a)o.classList.add("right");else if(k===j)o.classList.add("miss")});
+    b.querySelector(".fb").innerHTML=`<p class="verdict ${j===q.a?"ok":"no"}">${j===q.a?"✓ Certo!":`✕ Errado. A resposta correta é a (${L[q.a]}).`}</p><details open><summary>Gabarito comentado: ${L[q.a]}</summary>`+
+      q.c.map((t,k)=>`<div class="cm"><b>(${L[k]}) ${k===q.a?"certa":"errada"}:</b> ${t}</div>`).join("")+
+      (q.f?`<div class="cm"><b>Fonte:</b> ${q.f}</div>`:"")+`</details>`;
+    if(marc.every(m=>m>=0))finish();
+  });
   host.addEventListener("click",e=>{
     const a=e.target.dataset.a;if(!a)return;
     if(a==="re")return draw();
-    if(done)return;
-    const marc=qs.map((q,i)=>{const s=box.querySelector(`input[name="${key}q${i}"]:checked`);return s?+s.value:-1});
-    if(marc.includes(-1)&&!confirm("Há questões sem resposta. Corrigir mesmo assim?"))return;
-    done=true;let ac=0;
-    qs.forEach((q,i)=>{
-      const b=box.children[i];
-      b.querySelectorAll(".opt").forEach((o,j)=>{o.classList.remove("sel");o.querySelector("input").disabled=true;
-        if(j===q.a)o.classList.add("right");else if(j===marc[i])o.classList.add("wrong")});
-      if(marc[i]===q.a)ac++;
-      b.querySelector(".fb").innerHTML=`<details open><summary>Gabarito comentado: ${L[q.a]}</summary>`+
-        q.c.map((t,j)=>`<div class="cm"><b>(${L[j]}) ${j===q.a?"certa":"errada"}:</b> ${t}</div>`).join("")+
-        (q.f?`<div class="cm"><b>Fonte:</b> ${q.f}</div>`:"")+`</details>`;
-    });
-    res.textContent=`Resultado: ${ac} de ${qs.length} (${Math.round(100*ac/qs.length)}%)`;
-    const p=store.get("prog")||{};p[key]={ac,n:qs.length};store.set("prog",p);
+    finish();
   });
   draw();
 }
@@ -57,7 +59,7 @@ const views={
        <div class="card"><h3>Objetivos de aprendizagem</h3><ul>${m.obj.map(o=>`<li>${o}</li>`).join("")}</ul></div>`+
       m.secs.map(s=>`<div class="card"><h3>${s[0]}</h3>${s[1]}${s[2]?`<p class="src">Fonte: ${s[2]}</p>`:""}</div>`).join("")+
       `<h2>Mapa mental</h2><pre>${m.mapa}</pre><h2>Quiz do módulo <span class="tag">5 questões, padrão Cesgranrio (A a E)</span></h2>
-       <div class="alert">Questões autorais e inéditas, não são de provas reais. O gabarito comentado aparece depois de corrigir.</div><div id="quizhost"></div>
+       <div class="alert">Questões autorais e inéditas, não são de provas reais. Ao clicar em uma alternativa, ela fica verde se estiver certa ou amarela se estiver errada (e a certa fica verde), e o gabarito comentado da questão aparece na hora.</div><div id="quizhost"></div>
        <p class="row"><span>${prev?`<a class="btn sec" href="#m${prev.n}">← ${prev.n}. ${prev.t}</a>`:""}</span><span>${next?`<a class="btn sec" href="#m${next.n}">${next.n}. ${next.t} →</a>`:""}</span></p>`;
   },
   simulado:()=>`<h2>Simulado</h2><div class="card"><p>Sorteia questões dos módulos. Escolha:</p>
