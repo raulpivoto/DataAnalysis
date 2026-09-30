@@ -42,14 +42,16 @@ const views={
   edital:()=>EDITAL,
   modulos(){
     const p=store.get("prog")||{};
-    return `<h2>Módulos</h2><div class="grid">`+mods().map(m=>{const r=p["m"+m.n];
-      return `<a class="mod" href="#m${m.n}"><b>${m.n}. ${m.t}</b><small>${m.edital}</small><br><span class="tag">${r?`melhor/última: ${r.ac}/${r.n}`:"não feito"}</span></a>`}).join("")+`</div>
-      <p class="src">A ordem sugerida segue a dependência entre assuntos, não o peso na prova (o edital não informa pesos por assunto).</p>`;
+    const card=m=>{const r=p["m"+m.n];
+      return `<a class="mod" href="#m${m.n}"><b>${m.n}. ${m.t}</b><small>${m.edital}</small><br><span class="tag">${r?`última nota: ${r.ac}/${r.n}`:"não feito"}</span></a>`};
+    return `<h2>Conteúdo do edital (Anexo IV)</h2><div class="grid">`+mods().filter(m=>!m.fora).map(card).join("")+`</div>
+      <h2>Complementos fora do Anexo IV</h2><p class="src">Assuntos úteis para a atuação na área, mas que não constam por nome no edital da Ênfase 9. Estude depois do conteúdo oficial.</p><div class="grid">`+mods().filter(m=>m.fora).map(card).join("")+`</div>
+      <p class="src">A ordem segue a dependência entre assuntos, não o peso na prova (o edital não informa pesos por assunto).</p>`;
   },
   modulo(n){
     const list=mods(),m=list.find(x=>x.n===n);if(!m)return "<p>Módulo não encontrado.</p>";
     const i=list.indexOf(m),prev=list[i-1],next=list[i+1];
-    return `<p><a href="#modulos">← Módulos</a></p><h2>Módulo ${m.n}: ${m.t}</h2><p><span class="tag">Edital: ${m.edital}</span></p>`+
+    return `<p><a href="#modulos">← Módulos</a></p><h2>Módulo ${m.n}: ${m.t}</h2><p><span class="tag">${m.fora?"Complemento fora do Anexo IV":"Edital"}: ${m.edital}</span></p>`+
       (m.alerta?`<div class="alert">${m.alerta}</div>`:"")+
       `<div class="card"><h3>Introdução</h3><p>${m.intro}</p></div>
        <div class="card"><h3>Objetivos de aprendizagem</h3><ul>${m.obj.map(o=>`<li>${o}</li>`).join("")}</ul></div>`+
@@ -58,14 +60,14 @@ const views={
        <div class="alert">Questões autorais e inéditas, não são de provas reais. O gabarito comentado aparece depois de corrigir.</div><div id="quizhost"></div>
        <p class="row"><span>${prev?`<a class="btn sec" href="#m${prev.n}">← ${prev.n}. ${prev.t}</a>`:""}</span><span>${next?`<a class="btn sec" href="#m${next.n}">${next.n}. ${next.t} →</a>`:""}</span></p>`;
   },
-  simulado:()=>`<h2>Simulado</h2><div class="card"><p>Sorteia questões dos 11 módulos. Escolha o tamanho:</p>
-     <p><button class="btn" data-sim="10">10 questões</button> <button class="btn" data-sim="25">25 questões</button> <button class="btn" data-sim="55">Todas (55)</button></p>
+  simulado:()=>`<h2>Simulado</h2><div class="card"><p>Sorteia questões dos módulos. Escolha:</p>
+     <p><button class="btn" data-sim="10">10 do edital</button> <button class="btn" data-sim="25">25 do edital</button> <button class="btn" data-sim="edital">Todas do edital</button> <button class="btn sec" data-sim="todas">Todas (com complementos)</button></p>
      <p class="src">Referência: a prova real tem 50 questões específicas e exige mínimo de 50% de acerto por fase (item 7.1.4.3 do edital).</p></div><div id="quizhost"></div>`,
   fontes(){
     const all=mods().map(m=>`<div class="card"><h3>Módulo ${m.n}: ${m.t}</h3><ul>`+
       [...new Set(m.secs.map(s=>s[2]).filter(Boolean))].map(f=>`<li>${f}</li>`).join("")+`</ul></div>`).join("");
-    return `<h2>Fontes e pontos a conferir</h2><div class="alert">Não foi possível acessar os textos oficiais das normas neste ambiente. Números de artigos, valores e alíquotas foram escritos com base em conhecimento prévio: <b>confira no texto vigente antes de decorar</b>, principalmente valores em reais, alíquotas e prazos.</div>`+all+
-      `<div class="card"><h3>Lacunas assumidas</h3><ul><li>Portaria ANP nº 881/2022: texto não lido. O módulo 4 não afirma o conteúdo dela.</li><li>O edital não traz pesos por assunto nem indica a profundidade de cada tópico.</li><li>Estoques, Incoterms e negociação não constam do Anexo IV da Ênfase 9.</li></ul></div>`;
+    return `<h2>Fontes e pontos a conferir</h2><div class="alert">Nos módulos 4 e 5 a teoria foi conferida no texto oficial enviado. Nos demais (principalmente tributos, LC 123 e Incoterms) os números vêm de conhecimento prévio: <b>confira no texto vigente antes de decorar</b>.</div>`+all+
+      `<div class="card"><h3>Situação das fontes</h3><ul><li><b>Lidas no texto oficial:</b> Lei 13.303/2016 (arts. 28 a 91), Lei 9.478/1997 (versão atualizada) e Resolução ANP nº 881/2022 (enviadas por você).</li><li><b>Não lidas (conteúdo de conhecimento prévio, conferir):</b> LC 123/2006, LC 147/2014, Leis 10.336/2001 e 10.636/2002, LC 214/2025, EC 132/2023 e demais normas tributárias; Incoterms 2020 (ICC); referências bibliográficas.</li><li>O edital chama o ato 881/2022 de \"Portaria\", mas o documento com esse número é a <b>Resolução</b> ANP nº 881/2022. Confirme se é essa a norma pretendida.</li><li>O edital não traz pesos por assunto nem a profundidade de cada item.</li><li>Módulos 12 a 17 são complementos fora do Anexo IV.</li></ul></div>`;
   }
 };
 
@@ -81,9 +83,9 @@ function route(){
   window.scrollTo(0,0);
   if(after)after();
   if(h==="simulado")$("main").onclick=e=>{const n=e.target.dataset.sim;if(!n)return;
-    const pool=[];mods().forEach(m=>m.q.forEach(q=>pool.push(Object.assign({m:"M"+m.n},q))));
+    const pool=[];mods().filter(m=>n==="todas"||!m.fora).forEach(m=>m.q.forEach(q=>pool.push(Object.assign({m:"M"+m.n},q))));
     for(let i=pool.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]]}
-    quiz($("#quizhost"),pool.slice(0,+n),"sim");$("#quizhost").scrollIntoView()};
+    quiz($("#quizhost"),n==="todas"||n==="edital"?pool:pool.slice(0,+n),"sim");$("#quizhost").scrollIntoView()};
   else $("main").onclick=null;
 }
 addEventListener("hashchange",route);

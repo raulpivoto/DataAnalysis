@@ -14,7 +14,7 @@ const EDITAL=`<h2>O que o edital diz (conferido no PDF)</h2>
 <tr><td>Noções elementares de marketing e logística</td><td><a href="#m1">1</a></td></tr>
 <tr><td>Principais características do petróleo e derivados (GLP, gasolina, diesel); gás natural; biocombustíveis</td><td><a href="#m2">2</a></td></tr>
 <tr><td>Serviços de apoio portuário e agentes marítimos; mercado mundial de afretamentos; portos e terminais; transporte marítimo de granéis líquidos; navegação regular e livre; avarias marítimas</td><td><a href="#m3">3</a></td></tr>
-<tr><td>Transporte dutoviário; Lei 9.478/1997 e alterações; Portaria ANP nº 881/2022</td><td><a href="#m4">4</a></td></tr>
+<tr><td>Transporte dutoviário; Lei 9.478/1997 e alterações; "Portaria" ANP nº 881/2022 (o ato com esse número é a Resolução ANP nº 881/2022)</td><td><a href="#m4">4</a></td></tr>
 <tr><td>Contratação: Lei 13.303/2016, arts. 28 a 91; LC 123/2006, arts. 42 a 49; LC 147/2014</td><td><a href="#m5">5</a></td></tr>
 <tr><td>Tributos: IRPJ e CSLL, IRRF, ICMS, participações governamentais, PIS/PASEP, COFINS, CIDE (Leis 10.336/2001 e 10.636/2002), ISS, contribuição previdenciária, EC 132/2023, LC 214/2025</td><td><a href="#m6">6</a></td></tr>
 <tr><td>Matemática financeira; métodos de avaliação econômica; VPL e TIR</td><td><a href="#m7">7</a></td></tr>
@@ -23,5 +23,15 @@ const EDITAL=`<h2>O que o edital diz (conferido no PDF)</h2>
 <tr><td>Análise combinatória; probabilidade; estatística descritiva</td><td><a href="#m10">10</a></td></tr>
 <tr><td>Relações entre volume, pressão e temperatura; termologia; sistemas de unidades; conversões</td><td><a href="#m11">11</a></td></tr>
 </table></div>
-<div class="alert"><b>Fora do edital:</b> gestão de estoques, Incoterms e negociação não constam do Anexo IV da Ênfase 9. O edital tampouco informa pesos por assunto nem a profundidade de cada item. Língua Portuguesa e Inglesa (Conhecimentos Gerais) não fazem parte desta plataforma.</div>
-<div class="alert">Os textos oficiais das normas não puderam ser acessados durante a criação. Valores, alíquotas, prazos e numeração de artigos devem ser conferidos no texto vigente (veja a aba Fontes).</div>`;
+<h2>Complementos fora do Anexo IV</h2>
+<div class="card"><table>
+<tr><th>Assunto</th><th>Módulo</th><th>Por que entrou</th></tr>
+<tr><td>Gestão de estoques</td><td><a href="#m12">12</a></td><td>Pode aparecer em "noções de logística"</td></tr>
+<tr><td>Incoterms 2020</td><td><a href="#m13">13</a></td><td>Comercialização e mercado internacional (finalidade da ênfase)</td></tr>
+<tr><td>Negociação</td><td><a href="#m14">14</a></td><td>Comercialização, compras e contratos</td></tr>
+<tr><td>Compras, sourcing e gestão de contratos</td><td><a href="#m15">15</a></td><td>Finalidade da ênfase: fiscalização técnica e administrativa de contratos</td></tr>
+<tr><td>Comercialização de petróleo e derivados</td><td><a href="#m16">16</a></td><td>Finalidade da ênfase: comercialização nos mercados nacional e internacional</td></tr>
+<tr><td>Qualidade, segurança, meio ambiente, saúde e integridade</td><td><a href="#m17">17</a></td><td>Finalidade da ênfase cita QSMS</td></tr>
+</table></div>
+<div class="alert"><b>Sobre os complementos:</b> não constam por nome no Anexo IV e o edital não informa pesos nem profundidade. Estudar primeiro os módulos 1 a 11 é o mais seguro. Os complementos reduzem o risco de surpresa em questões amplas de logística e comercialização, mas não são garantia de que caiam.</div>
+<div class="alert"><b>Fontes:</b> a Lei 13.303 (arts. 28 a 91), a Lei 9.478 e a Resolução ANP 881/2022 foram conferidas no texto oficial enviado. Tributos, LC 123/2006, Incoterms e demais conteúdos vêm de conhecimento prévio: confira na aba Fontes. Língua Portuguesa e Inglesa (Conhecimentos Gerais) não fazem parte desta plataforma.</div>`;
